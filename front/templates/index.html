@@ -1,0 +1,93 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<script>
+// Get the modaltype1
+var modaltype1 = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modaltype1, close it
+window.onclick = function(event) {
+    if (event.target == modaltype1) {
+        modaltype1.style.display = "none";
+    }
+}
+</script>
+<!-- login pop up code end -->
+
+
+</div>
+<script>
+// Get the modaltype2
+var modaltype2 = document.getElementById('id02');
+
+// When the user clicks anywhere outside of the modaltype2, close it
+window.onclick = function(event) {
+  if (event.target == modaltype2) {
+    modaltype2.style.display = "none";
+  }
+}
+</script>
+<!-- signup pop up code end -->
+
+<!-- nav bar fixed -->
+
+<!-- nav bar fixed closed -->
+
+<!-- header -->
+<div class="container">
+<img src="{% static 'banner.png' %}" width = "100%">
+</div>
+<!-- header close -->
+
+<!-- intro for web -->
+<div class="row m-5">
+  <div class="col-6">
+   <p class='h1'>What is Lorem Ipsum?</p>
+	<p>	Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+  </div>
+  <div class="col-6">
+   <p class='h1'>Why do we use it?</p>
+	<p>	It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+  </div>
+</div>
+<!-- intro for web finish -->
+
+<!-- photo link -->
+<div id="services" class="row me-5 ms-5">
+  <div class="col-4">
+  <a href="{% url 'reading_material' %}">
+	<img id="img1" onmouseover="document.getElementById('img1').style.opacity='0.8'" 
+	  onmouseout="document.getElementById('img1').style.opacity='1'"
+	  src="{% static 'reading_materials.png' %}" width='100%' class="p-4 border border-dark border-2 rounded-end"/>
+  </a>
+  </div>
+  <div class="col-4">
+  <a href="{% url 'mock_test' %}">
+	<img id="img2" onmouseover="document.getElementById('img2').style.opacity='0.8'" 
+	  onmouseout="document.getElementById('img2').style.opacity='1'" 
+	  src="{% static 'mock_test.png' %}" width='100%' class="p-4 border border-dark border-2 rounded"/>
+	</a>
+  </div>
+  <div class="col-4">
+  <a href="{% url 'progress' %}">
+	<img id="img3" onmouseover="document.getElementById('img3').style.opacity='0.8'" 
+	  onmouseout="document.getElementById('img3').style.opacity='1'" 
+	  src="{% static 'progressiveness_evaluation.png' %}" width='100%' class="p-4 border border-dark border-2 rounded-start"/>
+  </a>
+  </div>
+</div>
+<!-- photo link finish -->
+
+<!-- bottom text for web -->
+<div class="row m-5">
+  <div class="col-6">
+   <p class='h1'>What is Lorem Ipsum?</p>
+	<p>	Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+  </div>
+  <div class="col-6">
+   <p class='h1'>Why do we use it?</p>
+	<p>	It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+  </div>
+</div>
+
+{% endblock %}
