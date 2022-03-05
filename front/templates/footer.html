@@ -1,23 +1,31 @@
 {% load static %}
-<nav class="container navbar navbar-expand-sm bg-dark navbar-dark">
-    <!-- left  corner -->
-       <div class="col-7 container-fluid justify-content-center">
-        <p class="pt-3" style="color:white;"> <b>Copyright &copy; </b> 2022 Entrance Prerparation. </p>
-      </div>
-      
-      <!-- center -->
-      <div class="col-5 container-fluid justify-content-center">
-        <ul class="navbar-nav">
-          
-          <li class="nav-item">
-            <a class="nav-link active" href="#">Terms & Conditions</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="#">Privacy Policy</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-    </nav>  
+<!doctype html>
+<html lang="en" class="h-100">
+  
+  <body class="d-flex flex-column h-100">
+    
 
-    <!-- footer end -->
+<footer class="footer mt-auto py-3 bg-dark sticky">
+  <div class="container">
+    <span class="text-white">Copyright ©   2022 Entrance Preparation.All rights are owned by this site. </span>
+    <a class="text-white second-one" href="{% url 'terms' %}" >Terms and Condition. </a>
+   <a class="text-white" href="{% url 'privacy' %}" >Privacy Policy </a>
+  </div> 
+  
+</footer>
+
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+<style>
+  .container{
+    display: flex;
+  justify-content: space-between;
+  align-items: center;
+  }
+.container > .second-one{
+  margin-left: 300px;
+}
+</style>
+      
+  </body>
+</html>

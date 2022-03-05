@@ -13,6 +13,11 @@ urlpatterns = [
     path('reading_materials/', views.reading_material, name='reading_material'),	
     path('mock_test/', views.mock_test, name='mock_test'),
     path('progress/', views.progress, name='progress'),
+    path('terms/', views.terms, name='terms'),
+    path('privacy/', views.privacy, name='privacy'),
+     path('contact/', views.send_email_contact, name='contact'),
+      path('services/', views.services, name='services'),
+
 
 
     path( 'reset_password/', auth_views.PasswordResetView.as_view(), name = 'reset_password'),

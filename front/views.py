@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.shortcuts import render, redirect
 from django.contrib import messages
+
 from django.contrib.auth import authenticate, login, logout
 from django.views.generic import TemplateView
+from django.core.mail import send_mail
 
 from .forms import CreateUserForm
 # Create your views here.
@@ -53,3 +55,33 @@ def loginPage(request):
 def logoutUser(request):
     logout(request)
     return redirect('login')
+def terms(request):
+     return render(request, 'terms.html')
+ 
+def privacy(request):
+     return render(request, 'privacy.html') 
+  
+def services(request):
+     return render(request, 'services.html') 
+ 
+def send_email_contact(request):
+    if request.method =="POST":
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
+        data = {
+            
+            'name': name,
+            'email': email,
+            'subject': subject,
+            'message': message
+        }
+        message = ''' New message: {} 
+        From: {}
+        
+        '''.format(data['subject'], data['email'])
+        messages.success(request, "Message succesfully sent. We will reach out to you as soon as possible! ")
+        send_mail(data['message'], message, '',  ['075bei005.achyut@pcampus.edu.np']) 
+        
+    return render(request, 'contact.html')     
