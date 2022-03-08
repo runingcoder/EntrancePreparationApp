@@ -17,7 +17,7 @@ urlpatterns = [
     path('privacy/', views.privacy, name='privacy'),
      path('contact/', views.send_email_contact, name='contact'),
       path('services/', views.services, name='services'),
-
+path('about/', views.about, name='about'),
 
 
     path( 'reset_password/', auth_views.PasswordResetView.as_view(), name = 'reset_password'),

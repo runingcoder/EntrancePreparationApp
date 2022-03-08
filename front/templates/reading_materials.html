@@ -13,7 +13,7 @@
 	  onclick="document.getElementById('iframe1').style.display='block'"> 	&rarr; In Praise of Shadows </span> <br> 
 	</p>
   
-		<iframe id="iframe1" style="display:none" width="100%" height= "70%" src=" {% static 'in_praise_of_shadows.pdf' %}"></iframe>
+		<iframe id="iframe1" style="display:none" width="50%" src=" {% static 'in_praise_of_shadows.pdf' %}"></iframe>
 	<p> <br> 1 video file found. <br>
 	<span id="text2" onmouseover="document.getElementById('text2').style.color='#0000ff'" 
 	  onmouseout="document.getElementById('text2').style.color='#000000'"
@@ -22,6 +22,11 @@
 		<source src=" {% static 'multiply.mp4' %}"  type="video/mp4">
 		Your browser does not support HTML video.
 	</video>
+	onclick="document.getElementById('video2').style.display='block'"> 	&rarr; Meeting </span> <br> 
+	<video id="video2" style="display:none" width="50%" height="auto"	controls>
+		  <source src=" {% static 'meeting.mp4' %}"  type="video/mp4">
+		  Your browser does not support HTML video.
+	  </video>
 	</p>
 	</div>
 </div>
