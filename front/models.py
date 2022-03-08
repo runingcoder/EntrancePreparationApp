@@ -1,5 +1,6 @@
 from re import M
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 from django.db import models
@@ -27,7 +28,7 @@ class Quiz(models.Model):
     time = models.IntegerField(help_text="duration of the quiz in minutes")
     required_score_to_pass = models.IntegerField(help_text="required score in %")
     difficulty = models.CharField(max_length=6, choices=DIFF_CHOICES)
-    mock =models.ForeignKey(MockTest, on_delete=models.CASCADE)
+    mock =models.ForeignKey(MockTest, on_delete=models.CASCADE,  related_name="mocker")
 
     def __str__(self):
         return f"{self.name}"
@@ -59,4 +60,12 @@ class Answer(models.Model):
 
     def __str__(self):
         return f"question: {self.question.text}, answer: {self.text}, correct: {self.correct}"
+    
+class Result(models.Model):
+    quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    score = models.FloatField()
+
+    def __str__(self):
+        return str(self.pk)    
         

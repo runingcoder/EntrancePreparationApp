@@ -1,0 +1,30 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+ <span style="color:cyan;font-weight:bold;font-size:1.4rem; text-align: center;" > The statistics for {{user}} are as follows:  </span>
+ 
+ 
+ <table style="width:100%; margin-left: 100px; color:rgb(201, 167, 233);font-family: Arial, Helvetica, sans-serif;
+ border-collapse: collapse;
+">
+    <tr>
+      <th style="text-align:left">Quiz</th>
+      <th style="text-align:left">Score</th>
+    </tr>
+    {% for obj in result %}
+    <tr>
+      <td>{{obj.quiz}}</td>
+      <td>{{obj.score}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+
+
+
+
+
+
+
+{% endblock content %}

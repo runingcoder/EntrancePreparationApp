@@ -1,0 +1,112 @@
+{% extends 'main.html' %}
+{% load static %}
+
+<!-- {% block scripts %}
+     <script src = "{% static 'main.js' %}" defer>
+</script>
+{% endblock scripts %} -->
+
+{% block title %}
+home
+{% endblock title %}
+
+{% block content %}
+
+<!-- -------- -->
+
+
+
+
+
+<!-- ---------- -->
+<hr>
+<!-- Modal --> 
+ <div class="modal fade" id="quizStartModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Start the quiz?</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id ="modal-body-confirm">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">NO</button>
+          <button type="button" id = "start-button" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wrapper">
+  {% for obj in quiz %}
+  <button 
+  class = "btn btn-link modal-button"
+  data-pk= "{{obj.pk}}"
+  data-quiz = "{{obj.name}}"
+  data-questions = "{{obj.number_of_questions}}"
+  data-difficulty     = "{{obj.difficulty}}"
+  data-time = "{{obj.time}}"
+  data-pass  = "{{obj.required_score_to_pass}}" 
+  data-bs-target = "#quizStartModal"
+  data-bs-toggle = "modal">
+  
+  <div>{{obj.name}}</div>
+
+</button>
+
+  {% endfor %}
+</div>
+
+
+  </div>
+    <style>
+
+.wrapper {
+  border-radius: 10px;
+  margin-left: 100px;
+  margin-right: 100px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  background-color: #86898b;
+  padding: 10px;
+}
+.wrapper > button {
+padding: 1em;
+background-color: #24d3ad;
+margin: 20px;
+border-radius: 5px;
+color:white;
+font-weight: 2;
+}
+</style>
+<script >
+  const modalBtns = [...document.getElementsByClassName('modal-button')]
+const modalBody = document.getElementById('modal-body-confirm')
+const startBtn = document.getElementById('start-button')
+const url = window.location.href
+modalBtns.forEach(modalBtn => modalBtn.addEventListener(
+'click', ()=>{
+const pk =  modalBtn.getAttribute('data-pk')
+const name =  modalBtn.getAttribute('data-quiz')
+const numQuestions =  modalBtn.getAttribute('data-questions')
+const difficulty =  modalBtn.getAttribute('data-difficulty')
+const scoreToPass =  modalBtn.getAttribute('data-pass')
+const time =  modalBtn.getAttribute('data-time')
+modalBody.innerHTML =`
+<div class ='h5 mb-3'> Are you ready "<b>${name}</b>"? </div>
+<div class ='text-muted'>
+<ul>
+<li>Difficulty:<b>${difficulty}</b></li>
+<li>NUmber of Questions:<b>${numQuestions}</b></li>
+<li>Score To pass:<b>${scoreToPass}</b></li>
+<li>Time limit:<b>${time} min </b></li>
+</ul>
+`
+startBtn.addEventListener(
+'click', ()=>{
+  location.replace("http://127.0.0.1:8000/quizview/" + pk) })
+}))
+
+</script> 
+
+{% endblock %}

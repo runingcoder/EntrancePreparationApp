@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Question, Answer, Quiz, MockTest
+from .models import *
 # Register your models here.
 
 
@@ -13,3 +13,4 @@ admin.site.register(Question, QuestionAdmin)
 admin.site.register(Answer)
 admin.site.register(Quiz)
 admin.site.register(MockTest)
+admin.site.register(Result)
