@@ -1,9 +1,11 @@
 from multiprocessing import context
 import pdb
 from django.shortcuts import render
+from rest_framework.response import Response
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import *
+from rest_framework.views import APIView
 from django.views.generic.list import ListView
 from django.contrib.auth import authenticate, login, logout
 from django.views.generic import TemplateView
@@ -187,11 +189,45 @@ def save_quiz_view(request, pk):
         else:
             return JsonResponse({'passed': False, 'score': score_, 'results': results})
         
-def progress_chart(request):
-    user = request.user.id
-    result = Result.objects.filter(user_id=user)
-    # import pdb
-    # pdb.set_trace()     
-    context= {'result': result, 'user': user}
-    return render(request, 'progress_chart.html', context)        
- 
+class ChartData(APIView):
+    def get(self, request,format =None):
+        result_physics = Result.objects.filter(user_id=request.user.id, quiz_id =1)
+        result_chemistry = Result.objects.filter(user_id=request.user.id, quiz_id =2)
+        result_maths = Result.objects.filter(user_id=request.user.id, quiz_id =3)
+
+        labels = []
+        data = []
+        labels1 = []
+        data1= []
+        count1 =0
+        count2 =0
+        count3 =0
+        data2 = []
+        labels2= []
+        
+        for item in result_physics:     
+            count1+=1       
+            labels.append(count1)
+            data.append(item.score)
+            
+        
+        for item in result_chemistry:     
+            count2+=1       
+            labels1.append(count2)
+            data1.append(item.score)
+        for item in result_maths:     
+            count3+=1       
+            labels2.append(count3)
+            data2.append(item.score)    
+            
+        value = {
+            "data": data,
+            "labels": labels,
+             "data1": data1,
+            "labels1": labels1,
+             "data2": data2,
+            "labels2": labels2,
+        }
+        return Response(value)
+def progressChart(request):
+    return render(request, 'progress_chart.html') 
