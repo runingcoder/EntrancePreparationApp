@@ -1,13 +1,28 @@
 from django.shortcuts import render
 from django.shortcuts import render, redirect
 from django.contrib import messages
-
+from .models import *
 from django.contrib.auth import authenticate, login, logout
 from django.views.generic import TemplateView
 from django.core.mail import send_mail
-
+from django.http.response import JsonResponse
 from .forms import CreateUserForm
-# Create your views here.
+import requests
+
+
+
+from django.db import transaction
+
+@transaction.atomic
+def getapi(request):
+    response= requests.get('https://opentdb.com/api.php?amount=50&category=22&difficulty=medium&type=multiple')
+    for ques in response.json()['results']:
+        question = Question.objects.create(text= ques['question'],quiz_id = '12')
+        Answer.objects.create(text=ques['correct_answer'], correct=1, question_id=question.id)
+        for ans in ques['incorrect_answers']:
+            Answer.objects.create(text=ans,correct=0,question_id=question.id)
+    return JsonResponse({"message": "sucessfully imported"})
+
 def index1(request):
      return render(request, 'index1.html')
 def index(request):
