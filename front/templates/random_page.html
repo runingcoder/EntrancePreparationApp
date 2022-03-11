@@ -1,0 +1,67 @@
+{% extends 'main.html' %} {% load static %} {% block content %}
+
+<hr>
+<div class="modal fade modal-backdrop-bg" id="quizStartModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Start the quiz?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modal-body-confirm">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">NO</button>
+                <button type="button" id="start-button" class="btn btn-primary ">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class='para'>
+    <h1> Random</h1>
+
+    <div class="anything">Random General knowledge quiz is good for mood because of the following reasons!
+        <ul>
+            <li>1.Lower Stress
+            </li>
+            <li>2. INcreased knowledge for you to brag in front of your friends.
+            </li>
+            <li>3. You can get a better understanding of the world.
+            </li>
+            <li>4. You can get a better understanding of the world even better.
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+<h1 style='text-align:center'>IOE Mock list</h1>
+
+<div class="wrapper">
+    
+    <a href="{% url 'random_quizlist' mock.id %}">{{mock.text}}</a> 
+
+</div>
+<div class='anything'><span class='h4'>With this practice, </span> students can eventuallly gain confidence in the subject material and hence some sense of accomplishment. Also, share your progress through the interactive graph.Some other benefits of attempting these tests
+    are:
+    <br>
+    </br>
+    <ul>
+
+        <li>1) Assurace in the specific tests practiced.</li>
+        <li>2) A valuable online experience in online test taking as the final exam is also online. </li>
+        <li> Free of cost for as long as the trial period continues.</li>
+        <li>Can share with friends and discuss the same sets of questions and eventually master them.</li>
+        <li>Overall more grounding of the MCQS taking this as a supplement to the physical classes study.</li>
+    </ul>
+</div>
+
+{% endblock %}

@@ -1,35 +1,19 @@
-{% extends 'main.html' %}
-{% load static %}
-{% block content %}
-
-
+{% extends 'main.html' %} {% load static %} {% block content %}
 <h1>Page in Progress!</h1>
-
-  <!-- <title>Reading Materials</title>
-  <!-- login pop up code -->
-
 <div class="row m-5">
-	<div class="container-fluid m-5 mt-0 mb-0">
-	<p> 1 pdf file found. <br> 
-	<span id="text1" onmouseover="document.getElementById('text1').style.color='#0000ff'" 
-	  onmouseout="document.getElementById('text1').style.color='#000000'"
-	  onclick="document.getElementById('iframe1').style.display='block'"> 	&rarr; In Praise of Shadows </span> <br> 
-	</p>
-  
-		<iframe id="iframe1" style="display:none" width="50%" src=" {% static 'in_praise_of_shadows.pdf' %}"></iframe>
-	<p> <br> 1 video file found. <br>
-	<span id="text2" onmouseover="document.getElementById('text2').style.color='#0000ff'" 
-	  onmouseout="document.getElementById('text2').style.color='#000000'"
-	  onclick="document.getElementById('video1').style.display='block'"> 	&rarr; Multiplication made Easy </span> <br> 
-	<video id="video1" style="display:none" width="50%" height="auto"	controls>
+    <div class="container-fluid m-5 mt-0 mb-0">
+        <p> 1 pdf file found. <br>
+            <span id="text1" onmouseover="document.getElementById('text1').style.color='#0000ff'" onmouseout="document.getElementById('text1').style.color='#000000'" onclick="document.getElementById('iframe1').style.display='block'"> 	&rarr; In Praise of Shadows </span>            <br>
+        </p>
+
+        <iframe id="iframe1" style="display:none" width="50%" src=" {% static 'in_praise_of_shadows.pdf' %}"></iframe>
+        <p> <br> 1 video file found. <br>
+            <span id="text2" onmouseover="document.getElementById('text2').style.color='#0000ff'" onmouseout="document.getElementById('text2').style.color='#000000'" onclick="document.getElementById('video1').style.display='block'"> 	&rarr; Multiplication made Easy </span>            <br>
+            <video id="video1" style="display:none" width="50%" height="auto" controls>
 		<source src=" {% static 'multiply.mp4' %}"  type="video/mp4">
 		Your browser does not support HTML video.
 	</video>
-	
-	</p>
-	</div>
-</div> -->
-<!-- pdf and mp4 viewer end -->
 
-
-{% endblock %}
+        </p>
+    </div>
+</div> --> {% endblock %}

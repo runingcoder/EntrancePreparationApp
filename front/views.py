@@ -17,6 +17,7 @@ import requests
 
 
 
+
 from django.db import transaction
 
 @transaction.atomic
@@ -36,39 +37,7 @@ def index(request):
      
 def reading_material(request):
      return render(request, 'reading_materials.html')  
- 
-def quizlist(request, pk):
     
-    quiz = Quiz.objects.filter(mock_id = pk)
-    return render(request, 'quiz.html', {'quiz': quiz})   
-@login_required(login_url='login')
-def mocktest(request):
-    mock = MockTest.objects.all()
-    context ={"mock": mock}
-    return render(request, 'mock_test.html',context)
-@login_required(login_url='login')
-def quizview(request, pk):
-    quiz = Quiz.objects.get(pk =pk)
-    context ={"quiz": quiz}
-    return render(request, 'quiz_view.html',context)
-
-@login_required(login_url='login')
-def quiz_data_view(request, pk):
-    quiz = Quiz.objects.get(pk=pk)
-    questions = []
-    for q in quiz.get_questions():
-        answers = []
-        for a in q.get_answers():
-            answers.append(a.text)
-        questions.append({str(q): answers})
-    return JsonResponse({
-        'data': questions,
-        'time': quiz.time,
-    })
-
-         
-def progress(request):
-     return render(request, 'progress.html')          
 
 def registerPage(request):
     form =CreateUserForm()
@@ -231,3 +200,57 @@ class ChartData(APIView):
         return Response(value)
 def progressChart(request):
     return render(request, 'progress_chart.html') 
+
+
+def ioe_page(request, pk):
+    mock = MockTest.objects.filter(text__startswith = pk[:3])
+    context = {'mock': mock}
+    return render(request, 'ioe_page.html', context)
+def random_page(request, pk):
+    mock = MockTest.objects.get(text = pk)
+    
+    context = {'mock': mock}
+    return render(request, 'random_page.html', context)
+def iom_page(request, pk):
+    mock = MockTest.objects.filter(text__startswith = pk[:3])
+    context = {'mock': mock}
+    return render(request, 'iom_page.html', context)
+
+@login_required(login_url='login')
+def mocktest(request):
+    mock = MockTest.objects.distinct('text')
+   
+    context ={"mock": mock}
+    return render(request, 'mock_test.html',context)
+
+def ioe_quizlist(request, pk):
+    quiz = Quiz.objects.filter(mock_id = pk)
+    return render(request, 'ioe_quiz.html', {'quiz': quiz})   
+
+def iom_quizlist(request, pk):
+    quiz = Quiz.objects.filter(mock_id = pk)
+    return render(request, 'iom_quiz.html', {'quiz': quiz})   
+def random_quizlist(request, pk):
+    quiz = Quiz.objects.filter(mock_id = pk)
+    return render(request, 'random_quiz.html', {'quiz': quiz})  
+
+@login_required(login_url='login')
+def quizview(request, pk):
+    quiz = Quiz.objects.get(pk =pk)
+    context ={"quiz": quiz}
+    return render(request, 'quiz_view.html',context)
+
+@login_required(login_url='login')
+def quiz_data_view(request, pk):
+    quiz = Quiz.objects.get(pk=pk)
+    questions = []
+    for q in quiz.get_questions():
+        answers = []
+        for a in q.get_answers():
+            answers.append(a.text)
+        questions.append({str(q): answers})
+    return JsonResponse({
+        'data': questions,
+        'time': quiz.time,
+    })
+

@@ -1,35 +1,13 @@
-{% extends 'main.html' %}
-{% load static %}
-{% block content %}
+{% extends 'main.html' %} {% load static %} {% block content %}
 
 
-<div style='text-align:center' class ='h1'>Mock Test list</div>
-
+<div style='text-align:center' class='h1'>Mock Test list</div>
 <div class="wrapper">
-  {% for obj in mock %}
-  <a href = "{% url 'quizlist' obj.id %}">{{obj.text}}</a>
-  {% endfor %}
 
-  </div>
-    <style>
+    <a href="{% url 'ioe_page' 'IOE' %}">IOE Test List</a>
+    <a href="{% url 'ioe_page' 'Random' %}">Random</a> {# this is commented out <a href="{% url 'csit_page' 'CSIT' %}">IOM</a> #}
+    <a href="{% url 'iom_page' 'IOM' %}">IOM</a></div>
 
-.wrapper {
-  border-radius: 10px;
-  margin-left: 100px;
-  margin-right: 100px;
-  display: grid;
-  grid-template-columns: 50% 50%;
-  background-color: #86898b;
-  padding: 10px;
-}
-.wrapper > a {
-padding: 1em;
-background-color: #42a2e2;
-border-radius: 5px;
-margin: 20px;
-color:white;
-font-weight: 2;
-}
-</style>
+
 
 {% endblock %}
