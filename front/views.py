@@ -229,5 +229,7 @@ class ChartData(APIView):
             "labels2": labels2,
         }
         return Response(value)
+
+@login_required(login_url='login')    
 def progressChart(request):
     return render(request, 'progress_chart.html') 

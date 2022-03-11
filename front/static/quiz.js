@@ -1,10 +1,7 @@
-// const url = window.location.href
-
 // const quizBox = document.getElementById('quiz-box')
 // const scoreBox = document.getElementById('score-box')
 // const resultBox = document.getElementById('result-box')
 // const timerBox = document.getElementById('timer-box')
-
 // const activateTimer = (time) => {
 //     if (time.toString().length < 2) {
 //         timerBox.innerHTML = `<b>0${time}:00</b>`
@@ -48,8 +45,6 @@
 
 //         timerBox.innerHTML = `<b>${displayMinutes}:${displaySeconds}</b>`
 //     }, 1000)
-
-
 // }
 // let data
 // $.ajax({
@@ -86,27 +81,17 @@
 // </style>
 
 // `
-// })
-
-// }
-
+// })}
 // });
 // activateTimer(response.time)
 // },
 // error: function(error){
 // console.log(error)
 // }
-
-
 // })
 // // for submit button response, the following code exists
 // const quizForm = document.getElementById('quiz-form')
 // const csrf = document.getElementsByName('csrfmiddlewaretoken')
-
-
-
-
-
 // const sendData =() =>{
 // const elements = [...document.getElementsByClassName('ans')]
 
