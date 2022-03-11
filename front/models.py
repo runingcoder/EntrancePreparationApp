@@ -1,3 +1,4 @@
+from pyexpat import model
 from re import M
 from django.db import models
 from django.contrib.auth.models import User
@@ -13,10 +14,10 @@ DIFF_CHOICES = (
 )
 class MockTest(models.Model):
     text = models.CharField(max_length=200)
-  
+    test_number = models.IntegerField(default=0)
 
     def __str__(self):
-        return str(self.text)
+        return str(self.text) + " test number = " +str(self.test_number)
 
     def get_answers(self):
         return self.answer_set.all()

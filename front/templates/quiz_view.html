@@ -3,9 +3,8 @@
 
 {% block content %}
 
-     <p style="text-align:center;color:blue;font-weight:bold;font-size:1.4rem;">You are in <span style="color:cyan;font-weight:bold;font-size:1.4rem;" >{{quiz.name}}   </span>
-page.</p>
-<p style="text-align:center;color:purple;font-weight:bold;font-size:1.4rem;">Required score to pass<span style="color:white">
+     <p style="text-align:center;color:blue;font-weight:bold;font-size:1.4rem;">You are giving the test for <span style="color:rgb(23, 94, 94);font-weight:bold;font-size:1.4rem;" >{{quiz.name}}   </span></p>
+<p style="text-align:center;color:purple;font-weight:bold;font-size:1.4rem;">Required score to pass<span style="color:rgb(34, 43, 167)">
 "{{quiz.required_score_to_pass}}"!</span></p>
 <div style="text-align:center;color:rgb(126, 14, 70);font-weight:bold;font-size:1.4rem;" id="timer-box"></div>
 <div style="text-align:right;">
@@ -98,6 +97,7 @@ quizBox.innerHTML +=`
 </div>`
 answers.forEach(answer=>{
 quizBox.innerHTML += `
+
 <div>
 <input  type ='radio' class ='ans' id = '${question}-${answer}' name ='${question}' value='${answer}'>
 

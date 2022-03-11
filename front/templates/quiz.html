@@ -1,6 +1,7 @@
 {% extends 'main.html' %}
 {% load static %}
 
+
 <!-- {% block scripts %}
      <script src = "{% static 'main.js' %}" defer>
 </script>
@@ -21,7 +22,7 @@ home
 <!-- ---------- -->
 <hr>
 <!-- Modal --> 
- <div class="modal fade" id="quizStartModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div class="modal fade modal-backdrop-bg" id="quizStartModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -32,11 +33,37 @@ home
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-bs-dismiss="modal">NO</button>
-          <button type="button" id = "start-button" class="btn btn-primary">Yes</button>
+          <button type="button" id = "start-button" class="btn btn-primary ">Yes</button>
         </div>
       </div>
     </div>
   </div>
+ 
+
+  
+   <div class='para'>
+     <h1>	IOE</h1>
+   
+    <div class ="anything">	Institute of Engineering (IOE) is an organization that falls under TU that conducts entrance examination where only those candidate who passes the entrance examination are deemed eligible for the admission. According to the rank of these candidates in the examination, it is decided the selection of TU engineering colleges that one can apply for. The following are the list of governmental engineering colleges that offers full( only some thousand rupees throughout the 4 year Bachelors course) and partial (3 lakh rupees throughout the 4 years Bachelors Course):
+      <ul>
+        <li>1.Paschimanchal Campus
+        </li>
+        <li>2. Purwanchal Campus: Institute of Engineering
+        </li>
+        <li>3. Thapathali Campus: Institute of Engineering
+        </li>
+        <li>4. Pulchowk Campus, Institute of Engineering (IOE)
+        </li>
+      </ul>
+    </div></div>
+    <!-- <hr class="mb-1" style="height:2px;border-width:0;color:gray;background-color:gray"> -->
+    
+</div>
+<div class = 'header1'> 
+  Course Question Categories</div>
+
+
+  
   <div class="wrapper">
   {% for obj in quiz %}
   <button 
@@ -59,54 +86,10 @@ home
 
 
   </div>
-    <style>
+ <link rel="stylesheet" href="{% static 'styles.css' %}">
+{% block script %}
 
-.wrapper {
-  border-radius: 10px;
-  margin-left: 100px;
-  margin-right: 100px;
-  display: grid;
-  grid-template-columns: 50% 50%;
-  background-color: #86898b;
-  padding: 10px;
-}
-.wrapper > button {
-padding: 1em;
-background-color: #24d3ad;
-margin: 20px;
-border-radius: 5px;
-color:white;
-font-weight: 2;
-}
-</style>
-<script >
-  const modalBtns = [...document.getElementsByClassName('modal-button')]
-const modalBody = document.getElementById('modal-body-confirm')
-const startBtn = document.getElementById('start-button')
-const url = window.location.href
-modalBtns.forEach(modalBtn => modalBtn.addEventListener(
-'click', ()=>{
-const pk =  modalBtn.getAttribute('data-pk')
-const name =  modalBtn.getAttribute('data-quiz')
-const numQuestions =  modalBtn.getAttribute('data-questions')
-const difficulty =  modalBtn.getAttribute('data-difficulty')
-const scoreToPass =  modalBtn.getAttribute('data-pass')
-const time =  modalBtn.getAttribute('data-time')
-modalBody.innerHTML =`
-<div class ='h5 mb-3'> Are you ready "<b>${name}</b>"? </div>
-<div class ='text-muted'>
-<ul>
-<li>Difficulty:<b>${difficulty}</b></li>
-<li>NUmber of Questions:<b>${numQuestions}</b></li>
-<li>Score To pass:<b>${scoreToPass}</b></li>
-<li>Time limit:<b>${time} min </b></li>
-</ul>
-`
-startBtn.addEventListener(
-'click', ()=>{
-  location.replace("http://127.0.0.1:8000/quizview/" + pk) })
-}))
-
-</script> 
+<script src ="{% static 'main.js' %}"> </script>
+{% endblock %}
 
 {% endblock %}
