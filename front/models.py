@@ -32,7 +32,7 @@ class Quiz(models.Model):
     mock =models.ForeignKey(MockTest, on_delete=models.CASCADE,  related_name="mocker")
 
     def __str__(self):
-        return f"{self.name}"
+        return str(self.name) + " test number = " +str(self.mock.test_number)
 
     def get_questions(self):
         questions = list(self.question_set.all())

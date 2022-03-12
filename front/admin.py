@@ -8,6 +8,8 @@ class AnswerInline(admin.TabularInline):
 
 class QuestionAdmin(admin.ModelAdmin):
     inlines = [AnswerInline]
+    search_fields = ['text']
+    list_filter = ['quiz']    
 
 admin.site.register(Question, QuestionAdmin)
 admin.site.register(Answer)

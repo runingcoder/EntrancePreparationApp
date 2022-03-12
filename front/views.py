@@ -120,7 +120,7 @@ def save_quiz_view(request, pk):
 
         for k in data_.keys():
             print('key: ', k)
-            question = Question.objects.get(text=k)
+            question = Question.objects.filter(text=k).first()
             questions.append(question)
         print(questions)
 
@@ -134,6 +134,8 @@ def save_quiz_view(request, pk):
 
         for q in questions:
             a_selected = request.POST.get(q.text)
+            # import pdb 
+            # pdb.set_trace()
 
             if a_selected != "":
                 question_answers = Answer.objects.filter(question=q)
