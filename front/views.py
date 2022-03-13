@@ -119,7 +119,7 @@ def save_quiz_view(request, pk):
         data_.pop('csrfmiddlewaretoken')
 
         for k in data_.keys():
-            print('key: ', k)
+            # print('key: ', k)
             question = Question.objects.filter(text=k).first()
             questions.append(question)
         print(questions)
