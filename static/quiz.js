@@ -54,15 +54,14 @@
             success: function(response) {
                 console.log(response)
                 data = response.data
+                var myList = '<ul>';
                 data.forEach(el => {
                     for (const [question, answers] of Object.entries(el)) {
                         //pretty useful code
-                        quizBox.innerHTML += `
-<hr>
-<div class ='mb-3
-
-'>
-<b>${question}</b>
+                        quizBox.innerHTML +='<ul>' + `
+                        
+<div class ='mb-3'>
+<li><b>${question}</b></li>
 </div>`
                         answers.forEach(answer => {
                             quizBox.innerHTML += `
@@ -71,7 +70,9 @@
 <input  type ='radio' class ='ans' id = '${question}-${answer}' name ='${question}' value='${answer}'>
 
 <label for='${question}'>${answer}</label>
+
 </div>
+
 <style>
 
 div.mb-3{
@@ -85,9 +86,9 @@ input[type=radio] {
 
 </style>
 
-`
+` 
                         })
-                    }
+                    }'</ul>'
                 });
                 activateTimer(response.time)
             },

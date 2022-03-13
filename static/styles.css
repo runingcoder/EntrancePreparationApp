@@ -10,8 +10,7 @@
 }
 
 .para>h1 {
-    font-size: 30px;
-    font-weight: bold;
+    
     color: black;
     margin-left: 30px;
 }
@@ -19,6 +18,7 @@
 #wrapper {
     display: flex;
     position: relative;
+    
 }
 
 #myChart,
@@ -81,16 +81,18 @@ border-top-right-radius: 6px;
 
 .wrapper {
     border-radius: 10px;
-    margin-left: 100px;
+    
     margin-right: 100px;
-    display: grid;
+    display: flex;
     grid-template-columns: 50% 50%;
     padding: 10px;
+    
 }
 
 .wrapper>button {
+    width: 200px;
     padding: 1em;
-    background-color: #24d3ad;
+    background-color: #198754;
     margin: 20px;
     border-radius: 5px;
     color: white;
@@ -99,11 +101,15 @@ border-top-right-radius: 6px;
 
 .wrapper>a {
     padding: 1em;
-    background-color: #24d3ad;
-    margin: 20px;
+    background-color: #198754;
+    width: 300px;
     border-radius: 5px;
     color: white;
     font-weight: 2;
+    font-size:larger;
+    text-align: center;
+    margin: 20px;
+
 }
 
 .wrapper1 {
@@ -368,7 +374,7 @@ table {
 }
 
 p {
-    font-size: 14px;
+    font-size: 14px;    
     font-family: 'Courier', Courier, monospace;
     color: #10110e;
     margin-left: 50px;
