@@ -30,6 +30,7 @@
 
 body {
     background-color: rgb(173, 204, 245);
+    /* background-color: white; */
     max-width: 100%;
     overflow-x: hidden;
 }

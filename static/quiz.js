@@ -47,6 +47,7 @@
             timerBox.innerHTML = ` Remaining Time:: <b>${displayMinutes}:${displaySeconds}</b>`
         }, 1000)
     }
+    let counter = 0;	
     let data
     $.ajax({
             type: 'GET',
@@ -57,38 +58,40 @@
                 var myList = '<ul>';
                 data.forEach(el => {
                     for (const [question, answers] of Object.entries(el)) {
+                        counter++;
                         //pretty useful code
-                        quizBox.innerHTML +='<ul>' + `
+                        quizBox.innerHTML += `
                         
 <div class ='mb-3'>
-<li><b>${question}</b></li>
+<b class="h5">${counter}. ${question}</b>	
 </div>`
                         answers.forEach(answer => {
                             quizBox.innerHTML += `
 
-<div>
-<input  type ='radio' class ='ans' id = '${question}-${answer}' name ='${question}' value='${answer}'>
 
-<label for='${question}'>${answer}</label>
+<div>
+<input  type ='radio' class ='ans form-check-input' id = '${question}-${answer}' name ='${question}' value='${answer}'>
+
+<label  class ='form-check-label' for='${question}'>${answer}</label>
 
 </div>
 
 <style>
 
 div.mb-3{
-    margin-left:30px;
 font-size:1.4rem;}
+
 input[type=radio] {
-    margin-left:60px;
     height:20px;
     width:20px;
+    margin-left:18px;
 }
 
 </style>
-
+<br>
 ` 
                         })
-                    }'</ul>'
+                    }   
                 });
                 activateTimer(response.time)
             },
