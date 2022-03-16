@@ -27,9 +27,10 @@ urlpatterns = [
      path('contact/', views.send_email_contact, name='contact'),
       path('services/', views.services, name='services'),
 path('about/', views.about, name='about'),
-path('api/progress/', ChartData.as_view(), name='progress_api'),
+path('api/progress/<str:pk>/', ChartData.as_view(), name='progress_api'),
 #  path('getapi/', getapi, name='getapi'),
-path('progress_chart/', views.progressChart, name='progress_chart'),
+path('progress_chart/<int:pk>/', views.progressChart, name='progress_chart'),
+
 
 
     path( 'reset_password/', auth_views.PasswordResetView.as_view(), name = 'reset_password'),

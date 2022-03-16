@@ -1,0 +1,25 @@
+{% extends 'main.html' %} {% load static %} {% block content %}
+<br>
+<span style="color:rgb(2, 71, 71);font-weight:bold;font-size:1.4rem; margin-left:120px;">These are the individual subject progress graphs of {{ request.user.username }} in IOE section. </span>
+
+<br>
+<br>
+<span style="color:rgb(2, 71, 71);font-weight:bold;font-size:1.4rem; margin-left:120px;"> X axis is the number of attempts and y axis is the score out of 100.  </span>
+
+<div class="chart-container">
+    <canvas id="myChart1"></canvas>
+    <canvas id="myChart2"></canvas>
+  <canvas id="myChart3"></canvas>   
+  <canvas id="myChart4"></canvas>
+  <canvas id="myChart5"></canvas>
+
+</div>
+
+
+
+
+{% block script %}
+
+<script src="{% static 'chartIOE.js' %}">
+</script>
+{% endblock %} {% endblock %}

@@ -87,6 +87,7 @@ input[type=radio] {
     margin-left:18px;
 }
 
+
 </style>
 <br>
 ` 
@@ -121,22 +122,19 @@ input[type=radio] {
             url: `${url}/save`,
             data: data,
             success: function(response) {
+                const pc = response.pc
+                const quizname = response.quizname                
                 const results = response.results
                 console.log(response)
-                console.log(results)
-
-                console.log(results)
-
-                console.log(results)
-
-
+                console.log(pc)
                 quizForm.hidden = true;
-
-
-                scoreBox.innerHTML = `"<span class="d-inline-block text-truncate" style='font-size:40px;color:blue;font-weight:bold;margin-left:25%;padding-bottom:50px'>
-    ${response.passed? 'Braviii! ' : ' Oops! '}Your result is ${response.score.toFixed(2)} %</span>`
-
-
+                scoreBox.innerHTML = `<span class="d-inline-block" style='font-size:40px;margin-left:15%;padding-bottom:50px'>
+    ${response.passed? 'Braviii! ' : ' Oops! '}Your result is ${response.score.toFixed(2)} % <br> See the progress chart of ${quizname} here: <button type="button" id="start1-button" class="btn btn-secondary">Results</button> </span> `
+    const startBtn1 = document.getElementById('start1-button')
+    startBtn1.addEventListener(
+        'click', () => {
+            location.replace("http://127.0.0.1:8000/progress_chart/" + pc)
+        })
 
                 results.forEach(res => {
                     const resDiv = document.createElement("div")

@@ -119,14 +119,19 @@ def save_quiz_view(request, pk):
         data_.pop('csrfmiddlewaretoken')
 
         for k in data_.keys():
-            # print('key: ', k)
             question = Question.objects.filter(text=k).first()
             questions.append(question)
         print(questions)
 
         user = request.user
         quiz = Quiz.objects.get(pk=pk)
-
+        quizn =quiz.mock.text
+        quizname = str(quizn[:3])
+        if quizname == "IOE":
+            
+            progresschartid =1
+        if quizname == "IOM":
+            progresschartid =2
         score = 0
         multiplier = 100 / quiz.number_of_questions
         results = []
@@ -156,54 +161,133 @@ def save_quiz_view(request, pk):
         Result.objects.create(quiz=quiz, user=user, score=score_)
 
         if score_ >= quiz.required_score_to_pass:
-            return JsonResponse({'passed': True, 'score': score_, 'results': results})
+            return JsonResponse({'passed': True, 'score': score_, 'results': results, 'quizname': quizname, 'pc': progresschartid})
         else:
-            return JsonResponse({'passed': False, 'score': score_, 'results': results})
+            return JsonResponse({'passed': False, 'score': score_, 'results': results,'quizname': quizname, 'pc': progresschartid})
         
 class ChartData(APIView):
-    def get(self, request,format =None):
-        result_physics = Result.objects.filter(user_id=request.user.id, quiz_id =1)
-        result_chemistry = Result.objects.filter(user_id=request.user.id, quiz_id =2)
-        result_maths = Result.objects.filter(user_id=request.user.id, quiz_id =3)
-
-        labels = []
-        data = []
-        labels1 = []
-        data1= []
-        count1 =0
-        count2 =0
-        count3 =0
-        data2 = []
-        labels2= []
-        
-        for item in result_physics:     
-            count1+=1       
-            labels.append(count1)
-            data.append(item.score)
+    def get(self, request,pk=None):
+        if pk =='IOE':
+                
+                result_physics = Result.objects.filter(user_id=request.user.id, quiz__mock__text__startswith ="IOE", quiz__name = "Physics")
+                result_chemistry = Result.objects.filter(user_id=request.user.id, quiz__mock__text__startswith ="IOE", quiz__name = "Chemistry")
+                result_maths = Result.objects.filter(user_id=request.user.id, quiz__mock__text__startswith ="IOE", quiz__name = "Maths")
+                result_english = Result.objects.filter(user_id=request.user.id, quiz__mock__text__startswith ="IOE", quiz__name = "English")
+                result_aptitude = Result.objects.filter(user_id=request.user.id, quiz__mock__text__startswith ="IOE", quiz__name = "Aptitude")
+                
+                labels = []
+                data = []
+                labels1 = []
+                data1= []
+                count1 =0
+                count2 =0
+                count3 =0
+                count4 =0
+                count5= 0
+                data2 = []
+                labels2= []
+                labels3 = []
+                data3 = []
+                labels4 = []
+                data4 = []
+                
+                
+                for item in result_physics:     
+                    count1+=1       
+                    labels.append(count1)
+                    data.append(item.score)
+                    
+                
+                for item in result_chemistry:     
+                    count2+=1       
+                    labels1.append(count2)
+                    data1.append(item.score)
+                for item in result_maths:     
+                    count3+=1       
+                    labels2.append(count3)
+                    data2.append(item.score)    
+                for item in result_english:     
+                    count4+=1       
+                    labels3.append(count4)
+                    data3.append(item.score)  
+                for item in result_aptitude:     
+                    count5+=1       
+                    labels4.append(count5)
+                    data4.append(item.score)      
+                    
+                    
+                value = {
+                    "data": data,
+                    "labels": labels,
+                    "data1": data1,
+                    "labels1": labels1,
+                    "data2": data2,
+                    "labels2": labels2,
+                    "labels3": labels3,
+                    "data3": data3,
+                    "labels4": labels4,
+                    "data4": data4
+                }
+                return Response(value)
+        if pk =='IOM':
+                
+                result_physics = Result.objects.filter(user_id=request.user.id, quiz__mock__text__startswith ='IOM', quiz__name = "Physics")
+                result_chemistry = Result.objects.filter(user_id=request.user.id, quiz__mock__text__startswith ='IOM', quiz__name = "Chemistry")
+                result_zoology = Result.objects.filter(user_id=request.user.id, quiz__mock__text__startswith ='IOM', quiz__name = "Zoology")
+                result_botany = Result.objects.filter(user_id=request.user.id, quiz__mock__text__startswith ='IOM', quiz__name = "Botany")
+                
+                labels5 = []
+                data5 = []
+                labels6 = []
+                data6= []
+                count5 =0
+                count6 =0
+                count7 =0
+                count8 =0
             
-        
-        for item in result_chemistry:     
-            count2+=1       
-            labels1.append(count2)
-            data1.append(item.score)
-        for item in result_maths:     
-            count3+=1       
-            labels2.append(count3)
-            data2.append(item.score)    
-            
-        value = {
-            "data": data,
-            "labels": labels,
-             "data1": data1,
-            "labels1": labels1,
-             "data2": data2,
-            "labels2": labels2,
-        }
-        return Response(value)
-def progressChart(request):
-    return render(request, 'progress_chart.html') 
-
-
+                data7 = []
+                labels7= []
+                labels8 = []
+                data8 = []
+               
+                
+                
+                for item in result_physics:     
+                    count5+=1       
+                    labels5.append(count5)
+                    data5.append(item.score)
+                    
+                
+                for item in result_chemistry:     
+                    count6+=1       
+                    labels6.append(count6)
+                    data6.append(item.score)
+                for item in result_zoology:     
+                    count7+=1       
+                    labels7.append(count7)
+                    data7.append(item.score)    
+                for item in result_botany:     
+                    count8+=1       
+                    labels8.append(count8)
+                    data8.append(item.score)      
+                    
+                    
+                value = {
+                    "data5": data5,
+                    "labels5": labels5,
+                    "data6": data6,
+                    "labels6": labels6,
+                    "data7": data7,
+                    "labels7": labels7,
+                    "labels8": labels8,
+                    "data8": data8,
+                }
+                return Response(value)    
+def progressChart(request, pk):
+    if pk ==1:
+       return render(request, 'progress_chart_IOE.html') 
+    if pk ==2:
+       return render(request, 'progress_chart_IOM.html') 
 def ioe_page(request, pk):
     mock = MockTest.objects.filter(text__startswith = pk[:3])
     context = {'mock': mock}
