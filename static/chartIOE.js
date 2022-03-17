@@ -81,8 +81,8 @@
                         label: 'Chemistry!',
                         data: defaultData1,
                         color: "blue",
-                        backgroundColor: "rgba(255,99,132,0.2)",
-                        borderColor: "rgba(255,99,132,1)",
+                        backgroundColor: "rgba(25,19,13,0.2)",
+                        borderColor: "rgba(25,29,12,1)",
                         borderWidth: 2
                     }]
                 },
@@ -199,7 +199,7 @@
                         label: 'English!',
                         data: defaultData1,
                         color: "blue",
-                        backgroundColor: "rgba(255,99,132,0.2)",
+                        backgroundColor: "rgba(255,199,232,0.7)",
                         borderColor: "rgba(255,99,132,1)",
                         borderWidth: 2
                     }]
@@ -255,8 +255,8 @@
                         label: 'Aptitude!',
                         data: defaultData1,
                         color: "blue",
-                        backgroundColor: "rgba(255,99,132,0.2)",
-                        borderColor: "rgba(255,99,132,1)",
+                        backgroundColor: "rgba(13, 180, 185, 0.4)",
+                        borderColor: "rgba(0,230,12,1)",
                         borderWidth: 2
                     }]
                 },

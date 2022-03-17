@@ -18,13 +18,13 @@
                     labels: labels5,
                     datasets: [{
                         fill: false,
-                        borderColor: 'rgb(75, 192, 192)',
+                        borderColor: 'rgb(5, 12, 12)',
                         tension: 0.1,
                         label: 'Physics',
                         data: defaultData5,
                         color: "blue",
-                        backgroundColor: "rgba(255,99,132,0.2)",
-                        borderColor: "rgba(255,99,132,1)",
+                        backgroundColor: "rgba(25,9,132,0.2)",
+                        borderColor: "rgba(25,9,32,1)",
                         borderWidth: 2
                     }]
                 },
@@ -82,7 +82,7 @@
                         data: defaultData6,
                         color: "blue",
                         backgroundColor: "rgba(255,99,132,0.2)",
-                        borderColor: "rgba(255,99,132,1)",
+                        borderColor: "rgba(255,9,132,1)",
                         borderWidth: 2
                     }]
                 },
