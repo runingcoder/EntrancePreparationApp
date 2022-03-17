@@ -125,8 +125,6 @@ input[type=radio] {
                 const pc = response.pc
                 const quizname = response.quizname                
                 const results = response.results
-                console.log(response)
-                console.log(pc)
                 quizForm.hidden = true;
                 scoreBox.innerHTML = `<span class="d-inline-block" style='font-size:40px;margin-left:15%;padding-bottom:50px'>
     ${response.passed? 'Braviii! ' : ' Oops! '}Your result is ${response.score.toFixed(2)} % <br> See the progress chart of ${quizname} here: <button type="button" id="start1-button" class="btn btn-secondary">Results</button> </span> `
