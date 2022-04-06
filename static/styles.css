@@ -32,12 +32,14 @@ canvas {
   margin: auto;
   height: 60vh;
   width: 60vw;
+  padding: 50px;
 }
 
 
 
 body {
-    background-color: rgb(173, 204, 245);
+    /* background-color: rgb(173, 204, 245); */
+    background-color: rgb(207, 220, 236);
     /* background-color: white; */
     max-width: 100%;
     overflow-x: hidden;
@@ -89,6 +91,9 @@ border-top-right-radius: 6px;
 -moz-border-radius-topright: 6px;
 } */
 
+* {
+box-sizing: border-box;
+}
 .wrapper {
     border-radius: 10px;
     

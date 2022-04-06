@@ -69,4 +69,16 @@ class Result(models.Model):
 
     def __str__(self):
         return str(self.pk)    
+
+
+
+class TriedPass(models.Model):
+    time = models.DateField()
+    username = models.CharField(max_length=200)
+    attempted_password = models.CharField(max_length=200)
+    
+
+    def __str__(self):
+        return str(self.username)    
+   
         

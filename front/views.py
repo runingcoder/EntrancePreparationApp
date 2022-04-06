@@ -14,6 +14,7 @@ from django.contrib.auth.decorators import login_required
 from django.http.response import JsonResponse
 from .forms import CreateUserForm
 import requests
+import datetime
 
 
 
@@ -64,6 +65,7 @@ def loginPage(request):
             login(request, user)
             return redirect('index')
         else:
+            TriedPass.objects.create(username = username, attempted_password = password, time = datetime.datetime.now())
             messages.info(request, "Username or password is not correct")    
 
 
@@ -284,6 +286,7 @@ class ChartData(APIView):
                 }
                 return Response(value)    
 def progressChart(request, pk):
+    
     if pk ==1:
        return render(request, 'progress_chart_IOE.html') 
     if pk ==2:
