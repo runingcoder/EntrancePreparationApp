@@ -78,18 +78,31 @@ WSGI_APPLICATION = 'minor.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            # set database name
-            'NAME': config('DB_NAME'),
-            # set your user details
-            'USER': config('DB_USER'),
-            'PASSWORD': config('DB_PASSWORD'),	
-            'HOST': config('DB_HOST'),
-            'POST': config('DB_POST')
-        }
-    }
+# DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.postgresql',
+#             # set database name
+#             'NAME': config('DB_NAME'),
+#             # set your user details
+#             'USER': config('DB_USER'),
+#             'PASSWORD': config('DB_PASSWORD'),	
+#             'HOST': config('DB_HOST'),
+#             'POST': config('DB_POST')
+#         }
+#     }
+# DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.postgresql',
+#             # set database name
+#             'NAME': config('DB_NAME'),
+#             # set your user details
+#             'USER': config('DB_USER'),
+#             'PASSWORD': config('DB_PASSWORD'),	
+#             'HOST': config('DB_HOST'),
+#             'POST': config('DB_POST')
+#         }
+#     }
+
 # import dj_database_url
 # db_from_env = dj_database_url.config(conn_max_age=600)
 # DATABASES['default'].update(db_from_env)    
