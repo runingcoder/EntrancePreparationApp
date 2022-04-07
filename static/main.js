@@ -23,6 +23,6 @@ modalBtns.forEach(modalBtn => modalBtn.addEventListener(
 `
         startBtn.addEventListener(
             'click', () => {
-                location.replace("https://pure-beach-09647.herokuapp.com/quizview/" + pk)
+                location.replace("https://dashboard.heroku.com/quizview/" + pk)
             })
     }))

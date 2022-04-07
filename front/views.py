@@ -292,6 +292,8 @@ def progressChart(request, pk):
        return render(request, 'progress_chart_IOE.html') 
     if pk ==2:
        return render(request, 'progress_chart_IOM.html') 
+    if pk ==0:
+       return render(request, 'progress_chart_GK.html') 
 def ioe_page(request, pk):
     mock = MockTest.objects.filter(text__startswith = pk[:3])
     context = {'mock': mock}
