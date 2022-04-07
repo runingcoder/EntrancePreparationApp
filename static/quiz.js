@@ -131,7 +131,7 @@ input[type=radio] {
     const startBtn1 = document.getElementById('start1-button')
     startBtn1.addEventListener(
         'click', () => {
-            location.replace("http://127.0.0.1:8000/progress_chart/" + pc)
+            location.replace("https://pure-beach-09647.herokuapp.com/progress_chart/" + pc)
         })
 
                 results.forEach(res => {
