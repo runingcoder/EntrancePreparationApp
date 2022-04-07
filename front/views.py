@@ -129,6 +129,7 @@ def save_quiz_view(request, pk):
         quiz = Quiz.objects.get(pk=pk)
         quizn =quiz.mock.text
         quizname = str(quizn[:3])
+        progresschartid =0
         if quizname == "IOE":
             
             progresschartid =1
