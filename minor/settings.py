@@ -26,8 +26,7 @@ SECRET_KEY =config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast =bool)
-
-ALLOWED_HOSTS = config('ALLOWED_HOSTS')
+ALLOWED_HOSTS=['pure-beach-09647.herokuapp.com', '127.0.0.1', '0.0.0.0']
 
 
 # Application definition
