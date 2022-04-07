@@ -90,19 +90,18 @@ WSGI_APPLICATION = 'minor.wsgi.application'
 #             'POST': config('DB_POST')
 #         }
 #     }
-# DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.postgresql',
-#             # set database name
-#             'NAME': config('DB_NAME'),
-#             # set your user details
-#             'USER': config('DB_USER'),
-#             'PASSWORD': config('DB_PASSWORD'),	
-#             'HOST': config('DB_HOST'),
-#             'POST': config('DB_POST')
-#         }
-#     }
-
+DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            # set database name
+            'NAME': 'd5pnvgi0i8l13n',
+            # set your user details
+            'USER': 'fyfmjtrsimbngr',
+            'PASSWORD': 'b41d94c228b2911d7435e71585d8348c844cd887f2f0d444291d14c266934f07',	
+            'HOST': 'ec2-52-3-60-53.compute-1.amazonaws.com',
+            'PORT': '5432',
+        }
+    }
 # import dj_database_url
 # db_from_env = dj_database_url.config(conn_max_age=600)
 # DATABASES['default'].update(db_from_env)    
