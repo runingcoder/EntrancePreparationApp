@@ -2,6 +2,7 @@ const modalBtns = [...document.getElementsByClassName('modal-button')]
 const modalBody = document.getElementById('modal-body-confirm')
 const startBtn = document.getElementById('start-button')
 const url = window.location.href
+console.log("url is " + url)
 modalBtns.forEach(modalBtn => modalBtn.addEventListener(
     'click', () => {
         const pk = modalBtn.getAttribute('data-pk')
