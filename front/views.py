@@ -303,6 +303,7 @@ def random_page(request, pk):
 def iom_page(request, pk):
     mock = MockTest.objects.filter(text__startswith = pk[:3])
     context = {'mock': mock}
+   
     return render(request, 'iom_page.html', context)
 
 @login_required(login_url='login')

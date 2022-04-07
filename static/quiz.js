@@ -127,7 +127,7 @@ input[type=radio] {
                 const results = response.results
                 quizForm.hidden = true;
                 scoreBox.innerHTML = `<span class="d-inline-block" style='font-size:40px;margin-left:15%;padding-bottom:50px'>
-    ${response.passed? 'Braviii! ' : ' Oops! '}Your result is ${response.score.toFixed(2)} % <a href="javascript:history.go(-1)" style="font-weight:bold;border-width:medium;margin-left: 500px;" class="btn btn-outline-danger mt-2"><span class="h5">Go Back</span></a><br> See the progress chart of ${quizname} here: <button type="button" id="start1-button" class="btn btn-secondary">Results</button></span> `
+    ${response.passed? 'Braviii! ' : ' Oops! '}Your result is ${response.score.toFixed(2)} % <a href="javascript:history.go(-1)" style="font-weight:bold;border-width:medium;margin-left: 800px; " class="btn btn-outline-danger mt-2"><span class="h5">Go Back</span></a><br> See the progress chart of ${quizname} here: <button type="button" id="start1-button" class="btn btn-secondary">Results</button></span> `
     const startBtn1 = document.getElementById('start1-button')
     startBtn1.addEventListener(
         'click', () => {
