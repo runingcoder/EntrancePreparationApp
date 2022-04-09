@@ -53,7 +53,7 @@
             type: 'GET',
             url: `${url}/data`,
             success: function(response) {
-                console.log(response)
+                
                 data = response.data
                 var myList = '<ul>';
                 data.forEach(el => {
