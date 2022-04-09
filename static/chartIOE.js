@@ -7,7 +7,7 @@
         method: "GET",
         url: endpoint,
         success: function(value) {
-            console.log(value)
+            
             labels = value.labels
             defaultData = value.data
             var ctx = document.getElementById('myChart1').getContext('2d');
