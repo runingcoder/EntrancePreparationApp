@@ -36,7 +36,7 @@ class Quiz(models.Model):
 
     def get_questions(self):
         questions = list(self.question_set.all())
-        random.shuffle(questions)
+#         random.shuffle(questions)
         return questions[:self.number_of_questions]
 
     class Meta:
