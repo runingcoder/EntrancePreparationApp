@@ -1,4 +1,16 @@
-    const url = window.location.href
+function randomArrayShuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+    while (0 !== currentIndex) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+    return array;
+  }    
+
+const url = window.location.href
     const quizBox = document.getElementById('quiz-box')
     const scoreBox = document.getElementById('score-box')
     const resultBox = document.getElementById('result-box')
@@ -65,6 +77,7 @@
 <div class ='mb-3'>
 <b class="h5">${counter}. ${question}</b>	
 </div>`
+                         randomArrayShuffle(answers)
                         answers.forEach(answer => {
                             quizBox.innerHTML += `
 
