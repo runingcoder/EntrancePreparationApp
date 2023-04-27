@@ -104,16 +104,20 @@ def send_email_contact(request):
         From: {}
         
         '''.format(data['subject'], data['email'])
-        messages.success(request, "Message succesfully sent. We will reach out to you as soon as possible! ")
+        
         send_mail(data['message'], message, '',  ['075bei005.achyut@pcampus.edu.np']) 
+        messages.success(request, "Message succesfully sent. We will reach out to you as soon as possible! ")
         
     return render(request, 'contact.html')    
 
-
+# stuff related with is_ajax deprecated and hence, used an alternative solution,
+# and don't rely on Chatgpt for these things, just search stackoverflow as it only has code till 2021.
+def is_ajax(request):
+    return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
 
 @login_required(login_url='login')
 def save_quiz_view(request, pk):
-    if request.is_ajax():
+    if is_ajax(request=request):
         questions = []
         data = request.POST
         data_ = dict(data.lists())

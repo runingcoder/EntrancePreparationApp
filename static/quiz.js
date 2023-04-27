@@ -9,7 +9,9 @@ function randomArrayShuffle(array) {
     }
     return array;
   }    
-
+  function myFunction() {
+    document.getElementById("fixedsidebar").style.display="none";
+}
 const url = window.location.href
     const quizBox = document.getElementById('quiz-box')
     const scoreBox = document.getElementById('score-box')
@@ -117,6 +119,7 @@ input[type=radio] {
     const quizForm = document.getElementById('quiz-form')
     const csrf = document.getElementsByName('csrfmiddlewaretoken')
     const sendData = () => {
+       
         const elements = [...document.getElementsByClassName('ans')]
 
         const data = {}
