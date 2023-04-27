@@ -46,6 +46,4 @@ websockets==10.1
 whitenoise==6.0.0
 wrapt==1.13.3
 yarg==0.1.9
-youtube-dl==2021.12.17
-yt-dlp==2022.1.21
 zipp==3.7.0
