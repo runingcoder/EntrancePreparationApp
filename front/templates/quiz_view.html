@@ -1,0 +1,47 @@
+{% extends 'main.html' %} {% load static %} {% block content %}
+<style>
+    body{
+        background-color: white;
+    }
+</style>
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-sm-8">
+        <form id='quiz-form' class='mt-3 mb-3'>
+            {% csrf_token %}
+            <div id='quiz-box'></div>
+            <button onclick="myFunction()" type='submit' class='btn btn-primary mt-3'>Save</button>
+        </form>
+       
+        
+
+      </div>
+      <div class="col-sm-4" >
+          <div id="fixedsidebar" style="position:fixed"> 
+            <p class="h5" style="font-weight:bold"><span class="h5" style="font-weight:bold">{{quiz.name}}</span> Test</p>
+            <p class="h5" style="font-weight:bold">Required score to pass : <span class="h5" style="font-weight:bold">
+            {{quiz.required_score_to_pass}}</span></p>
+            <p class="h5" style="color:#CA0B00;font-weight:bold" id="timer-box"></p>
+            <div style="text-align:center;">
+                <a href="javascript:history.go(-1)" style="font-weight:bold;border-width:medium;text-align:center;" class="btn btn-outline-danger mt-2"><span class="h5">Go Back</span></a>
+            </div>
+        </div> 
+    </div>
+    </div>
+
+  </div>
+  <div id="score-box"></div>
+  <div id="result-box"></div>
+
+{% block script %}
+
+<script src="{% static 'quiz.js' %}">
+</script>
+{% endblock %}
+
+
+
+
+
+<!-- ------ -->
+{% endblock content %}

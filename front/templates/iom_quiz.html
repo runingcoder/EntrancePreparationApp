@@ -1,0 +1,76 @@
+{% extends 'main.html' %} {% load static %}
+
+
+<!-- {% block scripts %}
+     <script src = "{% static 'main.js' %}" defer>
+</script>
+{% endblock scripts %} -->
+
+{% block title %} home {% endblock title %} {% block content %}
+
+<div class="modal fade modal-backdrop-bg" id="quizStartModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Start the quiz?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modal-body-confirm">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">NO</button>
+                <button type="button" id="start-button" class="btn btn-primary ">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div class='header1'>
+    Course Question Categories</div>
+
+
+
+<div class="wrapper">
+    {% for obj in quiz %}
+    <button class="btn btn-link modal-button" data-pk="{{obj.pk}}" data-quiz="{{obj.name}}" data-questions="{{obj.number_of_questions}}" data-difficulty="{{obj.difficulty}}" data-time="{{obj.time}}" data-pass="{{obj.required_score_to_pass}}" data-bs-target="#quizStartModal"
+        data-bs-toggle="modal">
+  
+  <div>{{obj.name}}</div>
+
+</button> {% endfor %}
+</div>
+
+
+
+</div>
+<div class='para'>
+    <h1> IOM</h1>
+
+    <div class="anything"> As recorded, TU is the first University in Nepal to conduct medical
+        courses in Nepal. Institute of Medicine(IOM) was established in 1972
+        under TU with the aim of training all categories of health manpower
+        required in the country. This is a course of 4 years plus 1 year of internship.
+        As for the entrance exam, students who have passed Science PLus 2 
+        in biology section with subjects Physics, Chemistry, Botany, Zoology and
+        English can apply for the entrance for the selection process in IOM.
+        There are different exam syllbaus patterns for different universities as 
+        IOM falls under TU. Zoology, Botany , Chemistry and Physics are the subjects that are in the
+        syllabus of IOM entrance examination with the marks distribution as follows:
+        <ul>
+            <br>
+            <li>Zoology: 40
+            </li>
+            <li>Botany: 40
+            </li>
+            <li>Chemistry: 50
+            </li>
+            <li>Physics: 50
+            </li>
+        </ul>
+    </div>
+</div>
+<link rel="stylesheet" href="{% static 'styles.css' %}"> {% block script %}
+
+<script src="{% static 'main.js' %}">
+</script>
+{% endblock %} {% endblock %}

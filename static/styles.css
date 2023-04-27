@@ -1,0 +1,423 @@
+.anything {
+    margin-left: 30px;
+}
+
+.header1 {
+    text-align: center;
+    font-size: 30px;
+    color: black;
+    font-weight: bold;
+}
+
+.para>h1 {
+    
+    color: black;
+    margin-left: 30px;
+}
+
+#wrapper {
+    display: flex;
+    position: relative;
+    
+}
+
+
+canvas {
+  border: 1px dotted cyan;
+  margin-bottom: 40px;
+}
+
+.chart-container {
+  position: relative;
+  margin: auto;
+  height: 60vh;
+  width: 60vw;
+  padding: 50px;
+}
+
+
+
+body {
+    /* background-color: rgb(173, 204, 245); */
+    background-color: rgb(207, 220, 236);
+    /* background-color: white; */
+    max-width: 100%;
+    overflow-x: hidden;
+    padding-bottom: 100px;
+}
+
+
+/* .modal-header {
+padding:9px 15px;
+border-bottom:1px solid #eee;
+
+-webkit-border-top-left-radius: 5px;
+-webkit-border-top-right-radius: 5px;
+-moz-border-radius-topleft: 5px;
+-moz-border-radius-topright: 5px;
+border-top-left-radius: 5px;
+border-top-right-radius: 5px;
+}
+.modal-body
+{
+background-color: #FFFFFF;
+}
+
+.modal-content
+{
+border-radius: 6px;
+-webkit-border-radius: 6px;
+-moz-border-radius: 6px;
+
+}
+
+.modal-footer
+{
+border-bottom-left-radius: 6px;
+border-bottom-right-radius: 6px;
+-webkit-border-bottom-left-radius: 6px;
+-webkit-border-bottom-right-radius: 6px;
+-moz-border-radius-bottomleft: 6px;
+-moz-border-radius-bottomright: 6px;
+}
+
+.modal-header
+{
+border-top-left-radius: 6px;
+border-top-right-radius: 6px;
+-webkit-border-top-left-radius: 6px;
+-webkit-border-top-right-radius: 6px;
+-moz-border-radius-topleft: 6px;
+-moz-border-radius-topright: 6px;
+} */
+
+* {
+box-sizing: border-box;
+}
+.wrapper {
+    border-radius: 10px;
+    
+    margin-right: 100px;
+    display: flex;
+    grid-template-columns: 50% 50%;
+    padding: 10px;
+    
+}
+
+.wrapper>button {
+    width: 200px;
+    padding: 1em;
+    background-color: #198754;
+    margin: 20px;
+    border-radius: 5px;
+    color: white;
+    font-weight: 2;
+    font-size:larger;
+}
+
+.wrapper>a {
+    padding: 1em;
+    background-color: #198754;
+    width: 300px;
+    border-radius: 5px;
+    color: white;
+    font-weight: 2;
+    font-size:larger;
+    text-align: center;
+    margin: 20px;
+
+}
+
+.wrapper1 {
+    border-radius: 10px;
+    display: block;
+    padding-top: 10rem;
+}
+
+.wrapper1>a {
+    padding: 10em;
+    background-color: #24d3ad;
+    margin: 20px;
+    border-radius: 5px;
+    color: white;
+    font-weight: 2;
+}
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    position: relative;
+}
+
+.containerforpopup {
+    padding: 16px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+
+/* The modaltype1 (background) */
+
+.modaltype1 {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+
+/* modaltype1 Content/Box */
+
+.modaltype1-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto;
+    /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%;
+    /* Could be more or less, depending on screen size */
+}
+
+
+/* The Close Button (x) */
+
+.close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+
+/* Add Zoom Animation */
+
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {
+        -webkit-transform: scale(0)
+    }
+    to {
+        -webkit-transform: scale(1)
+    }
+}
+
+@keyframes animatezoom {
+    from {
+        transform: scale(0)
+    }
+    to {
+        transform: scale(1)
+    }
+}
+
+
+/* Change styles for span and cancel button on extra small screens */
+
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+    .cancelbtn {
+        width: 100%;
+    }
+}
+
+
+/* <!-- css for login popup end -->
+ 
+ <!-- css for signup popup --> */
+
+
+/* Extra styles for the cancel button */
+
+.cancelbtnsignup {
+    color: white;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    opacity: 0.9;
+    padding: 14px 20px;
+    background-color: #f44336;
+}
+
+
+/* Float cancel and signup buttons and add an equal width */
+
+.cancelbtnsignup,
+.signupbtn {
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    opacity: 0.9;
+    float: left;
+    width: 50%;
+    background-color: #f44336
+}
+
+.cancelbtnsignup:hover,
+.signupbtn:hover {
+    opacity: 1;
+}
+
+.signupbtn {
+    background-color: #04AA6D;
+}
+
+
+/* Add padding to container elements */
+
+.containersignup {
+    padding: 16px;
+}
+
+
+/* The modaltype2 (background) */
+
+.modaltype2 {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: #474e5d;
+    padding-top: 50px;
+}
+
+
+/* modaltype2 Content/Box */
+
+.modaltype2-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto;
+    /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%;
+    /* Could be more or less, depending on screen size */
+}
+
+
+/* Style the horizontal ruler */
+
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+
+
+/* The Close Button (x) */
+
+.close_su {
+    position: absolute;
+    right: 35px;
+    top: 15px;
+    font-size: 40px;
+    font-weight: bold;
+    color: #f1f1f1;
+}
+
+.close_su:hover,
+.close_su:focus {
+    color: #f44336;
+    cursor: pointer;
+}
+
+
+/* Clear floats */
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+
+/* Change styles for cancel button and signup button on extra small screens */
+
+@media screen and (max-width: 300px) {
+    .cancelbtnsignup,
+    .signupbtn {
+        width: 100%;
+    }
+}
+
+table {
+    border-collapse: collapse;
+}
+
+.leftie {
+    margin-left: 200px;
+}
+
+p {
+    font-size: 14px;    
+    font-family: 'Courier', Courier, monospace;
+    color: #10110e;
+    margin-left: 50px;
+    font-weight: bold;
+}
+
+.h1 {
+    font-size: 30px;
+    font-weight: bold;
+    color: rgb(13, 14, 12);
+    margin-left: 50px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container>.second-one {
+    margin-left: 300px;
+}
+
+.middler {
+    margin-left: 50px;
+}
+
+.righty {
+    margin-right: 50px;
+}
