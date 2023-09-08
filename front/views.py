@@ -88,13 +88,14 @@ def about(request):
      return render(request, 'about.html') 
  
 def send_email_contact(request):
+    # this feature doesn't work because Google disbaled the access for less secure apps on May 30th, 2022.
+    
     if request.method =="POST":
         name = request.POST.get('name')
         email = request.POST.get('email')
         subject = request.POST.get('subject')
         message = request.POST.get('message')
-        data = {
-            
+        data = {            
             'name': name,
             'email': email,
             'subject': subject,
@@ -133,11 +134,12 @@ def save_quiz_view(request, pk):
         quiz = Quiz.objects.get(pk=pk)
         quizn =quiz.mock.text
         quizname = str(quizn[:3])
-        if quizname == "IOE":
-            
+        if quizname == "IOE":            
             progresschartid =1
         if quizname == "IOM":
             progresschartid =2
+        # if quizname == "GK":
+        #     progresschartid =3
         score = 0
         multiplier = 100 / quiz.number_of_questions
         results = []
