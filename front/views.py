@@ -37,7 +37,7 @@ def getapi(request):
         "https://opentdb.com/api.php?amount=50&category=22&difficulty=medium&type=multiple"
     )
     for ques in response.json()["results"]:
-        question = Question.objects.create(text=ques["question"], quiz_id="12")
+        question = Question.objects.create(text=ques["question"], quiz_id="19")
         Answer.objects.create(
             text=ques["correct_answer"], correct=1, question_id=question.id
         )

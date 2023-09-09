@@ -35,16 +35,16 @@ function createChart(chartId, labels, data, labelName, backgroundColor, borderCo
     });
 }
 
-function fetchDataAndCreateChart() {
+function fetchDataAndCreateChart(endpoint) {
     $.ajax({
         method: "GET",
         url: endpoint,
         success: function (value) {
-            createChart(endpoint, 'myChart1', 'Physics', "rgba(255,99,132,0.2)", "rgba(255,99,132,1)");
-            createChart(endpoint, 'myChart2', 'Chemistry!', "rgba(25,19,13,0.2)", "rgba(25,29,12,1)");
-            createChart(endpoint, 'myChart3', 'Mathematics', "rgba(55,199,32,0.2)", "rgba(25,99,192,1)");
-            createChart(endpoint, 'myChart4', 'English!', "rgba(255,199,232,0.7)", "rgba(255,99,132,1)");
-            createChart(endpoint, 'myChart5', 'Aptitude!', "rgba(13, 180, 185, 0.4)", "rgba(0,230,12,1)");
+            createChart('myChart1', value.labels, value.data, 'Physics', "rgba(255,99,132,0.2)", "rgba(255,99,132,1)");
+            createChart('myChart2', value.labels1, value.data1, 'Chemistry!', "rgba(25,19,13,0.2)", "rgba(25,29,12,1)");
+            createChart('myChart3', value.labels2, value.data2, 'Mathematics', "rgba(55,199,32,0.2)", "rgba(25,99,192,1)");
+            createChart('myChart4', value.labels3, value.data3, 'English!', "rgba(255,199,232,0.7)", "rgba(255,99,132,1)");
+            createChart('myChart5', value.labels4, value.data4, 'Aptitude!', "rgba(13, 180, 185, 0.4)", "rgba(0,230,12,1)");
 
         },
         error: function (error_data) {
@@ -55,5 +55,5 @@ function fetchDataAndCreateChart() {
 }
 
 var endpoint = '/api/progress/IOE';
-fetchDataAndCreateChart();
-// Fetch and create charts for different subjects
+fetchDataAndCreateChart(endpoint);
+    // Fetch and create charts for different subjects

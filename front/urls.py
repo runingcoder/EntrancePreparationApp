@@ -26,7 +26,7 @@ urlpatterns = [
     path("services/", views.services, name="services"),
     path("about/", views.about, name="about"),
     path("api/progress/<str:pk>/", ChartData.as_view(), name="progress_api"),
-    #  path('getapi/', getapi, name='getapi'),
+    path("getapi/", getapi, name="getapi"),
     path("progress_chart/<int:pk>/", views.progressChart, name="progress_chart"),
     path("captcha/", include("captcha.urls")),
     path(
