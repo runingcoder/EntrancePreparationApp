@@ -5,7 +5,7 @@
   }
 </style>
 <br>
-<span style="color:rgb(2, 71, 71);font-weight:bold;font-size:1.4rem; margin-left:120px;">These are the individual subject progress graphs of {{ request.user.username }} in IOM section. </span>
+<span style="color:rgb(2, 71, 71);font-weight:bold;font-size:1.4rem; margin-left:120px;">These are the individual subject progress graphs of {{ request.user.username }} in IOE section. </span>
 
 <br>
 <br>
@@ -16,25 +16,18 @@ position: relative;
 width:80vh;
 height: auto ;
 margin-bottom: 30px; ">
-    <canvas id="myChart5"></canvas>
-    <canvas id="myChart6"></canvas>
-    <canvas id="myChart8"></canvas>
-  <canvas id="myChart7"></canvas>
-    
-    
-
-
-
+    <canvas id="myChart9"></canvas>
+    <canvas id="myChart10"></canvas>
+  <canvas id="myChart11"></canvas>   
+  <canvas id="myChart12"></canvas>
 
 </div>
-<br>
-<br>
-<br>
+
 
 
 
 {% block script %}
 
-<script src="{% static 'chartIOM.js' %}">
+<script src="{% static 'chartGk.js' %}">
 </script>
 {% endblock %} {% endblock %}

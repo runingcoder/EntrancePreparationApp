@@ -156,9 +156,7 @@ def save_quiz_view(request, pk):
         questions = []
         data = request.POST
         data_ = dict(data.lists())
-
         data_.pop("csrfmiddlewaretoken")
-
         for k in data_.keys():
             question = Question.objects.filter(text=k).first()
             questions.append(question)
@@ -172,8 +170,8 @@ def save_quiz_view(request, pk):
             progresschartid = 1
         if quizname == "IOM":
             progresschartid = 2
-        # if quizname == "GK":
-        #     progresschartid =3
+        if quizname == "Ran":
+            progresschartid = 3
         score = 0
         multiplier = 100 / quiz.number_of_questions
         results = []
@@ -181,9 +179,6 @@ def save_quiz_view(request, pk):
 
         for q in questions:
             a_selected = request.POST.get(q.text)
-            # import pdb
-            # pdb.set_trace()
-
             if a_selected != "":
                 question_answers = Answer.objects.filter(question=q)
                 for a in question_answers:
@@ -228,149 +223,82 @@ def save_quiz_view(request, pk):
 
 class ChartData(APIView):
     def get(self, request, pk=None):
-        if pk == "IOE":
-            result_physics = Result.objects.filter(
+        def fetch_subject_results(mock_startswith, subject_name):
+            results = Result.objects.filter(
                 user_id=request.user.id,
-                quiz__mock__text__startswith="IOE",
-                quiz__name="Physics",
+                quiz__mock__text__startswith=mock_startswith,
+                quiz__name=subject_name,
             )
-            result_chemistry = Result.objects.filter(
-                user_id=request.user.id,
-                quiz__mock__text__startswith="IOE",
-                quiz__name="Chemistry",
-            )
-            result_maths = Result.objects.filter(
-                user_id=request.user.id,
-                quiz__mock__text__startswith="IOE",
-                quiz__name="Maths",
-            )
-            result_english = Result.objects.filter(
-                user_id=request.user.id,
-                quiz__mock__text__startswith="IOE",
-                quiz__name="English",
-            )
-            result_aptitude = Result.objects.filter(
-                user_id=request.user.id,
-                quiz__mock__text__startswith="IOE",
-                quiz__name="Aptitude",
-            )
-
             labels = []
             data = []
-            labels1 = []
-            data1 = []
-            count1 = 0
-            count2 = 0
-            count3 = 0
-            count4 = 0
-            count5 = 0
-            data2 = []
-            labels2 = []
-            labels3 = []
-            data3 = []
-            labels4 = []
-            data4 = []
+            count = 0
 
-            for item in result_physics:
-                count1 += 1
-                labels.append(count1)
+            for item in results:
+                count += 1
+                labels.append(count)
                 data.append(item.score)
 
-            for item in result_chemistry:
-                count2 += 1
-                labels1.append(count2)
-                data1.append(item.score)
-            for item in result_maths:
-                count3 += 1
-                labels2.append(count3)
-                data2.append(item.score)
-            for item in result_english:
-                count4 += 1
-                labels3.append(count4)
-                data3.append(item.score)
-            for item in result_aptitude:
-                count5 += 1
-                labels4.append(count5)
-                data4.append(item.score)
+            return {"data": data, "labels": labels, "count": count}
+
+        if pk == "IOE":
+            physics_data = fetch_subject_results("IOE", "Physics")
+            chemistry_data = fetch_subject_results("IOE", "Chemistry")
+            maths_data = fetch_subject_results("IOE", "Maths")
+            english_data = fetch_subject_results("IOE", "English")
+            aptitude_data = fetch_subject_results("IOE", "Aptitude")
 
             value = {
-                "data": data,
-                "labels": labels,
-                "data1": data1,
-                "labels1": labels1,
-                "data2": data2,
-                "labels2": labels2,
-                "labels3": labels3,
-                "data3": data3,
-                "labels4": labels4,
-                "data4": data4,
+                "data": physics_data["data"],
+                "labels": physics_data["labels"],
+                "data1": chemistry_data["data"],
+                "labels1": chemistry_data["labels"],
+                "data2": maths_data["data"],
+                "labels2": maths_data["labels"],
+                "labels3": english_data["labels"],
+                "data3": english_data["data"],
+                "labels4": aptitude_data["labels"],
+                "data4": aptitude_data["data"],
+                "count1": physics_data["count"],
+                "count2": chemistry_data["count"],
+                "count3": maths_data["count"],
+                "count4": english_data["count"],
+                "count5": aptitude_data["count"],
             }
             return Response(value)
+
         if pk == "IOM":
-            result_physics = Result.objects.filter(
-                user_id=request.user.id,
-                quiz__mock__text__startswith="IOM",
-                quiz__name="Physics",
-            )
-            result_chemistry = Result.objects.filter(
-                user_id=request.user.id,
-                quiz__mock__text__startswith="IOM",
-                quiz__name="Chemistry",
-            )
-            result_zoology = Result.objects.filter(
-                user_id=request.user.id,
-                quiz__mock__text__startswith="IOM",
-                quiz__name="Zoology",
-            )
-            result_botany = Result.objects.filter(
-                user_id=request.user.id,
-                quiz__mock__text__startswith="IOM",
-                quiz__name="Botany",
-            )
-
-            labels5 = []
-            data5 = []
-            labels6 = []
-            data6 = []
-            count5 = 0
-            count6 = 0
-            count7 = 0
-            count8 = 0
-
-            data7 = []
-            labels7 = []
-            labels8 = []
-            data8 = []
-
-            for item in result_physics:
-                count5 += 1
-                labels5.append(count5)
-                data5.append(item.score)
-
-            for item in result_chemistry:
-                count6 += 1
-                labels6.append(count6)
-                data6.append(item.score)
-            for item in result_zoology:
-                count7 += 1
-                labels7.append(count7)
-                data7.append(item.score)
-            for item in result_botany:
-                count8 += 1
-                labels8.append(count8)
-                data8.append(item.score)
+            physics_data = fetch_subject_results("IOM", "Physics")
+            chemistry_data = fetch_subject_results("IOM", "Chemistry")
+            zoology_data = fetch_subject_results("IOM", "Zoology")
+            botany_data = fetch_subject_results("IOM", "Botany")
 
             value = {
-                "data5": data5,
-                "labels5": labels5,
-                "data6": data6,
-                "labels6": labels6,
-                "data7": data7,
-                "labels7": labels7,
-                "labels8": labels8,
-                "data8": data8,
+                "data5": physics_data["data"],
+                "labels5": physics_data["labels"],
+                "data6": chemistry_data["data"],
+                "labels6": chemistry_data["labels"],
+                "data7": zoology_data["data"],
+                "labels7": zoology_data["labels"],
+                "labels8": botany_data["labels"],
+                "data8": botany_data["data"],
+                "count5": physics_data["count"],
+                "count6": chemistry_data["count"],
+                "count7": zoology_data["count"],
+                "count8": botany_data["count"],
             }
             return Response(value)
+
+        if pk == "GK":
+            subjects = ["General knowledge", "Books", "Science And Nature", "Geography"]
+            data_dict = {}
+
+            for i, subject in enumerate(subjects):
+                subject_data = fetch_subject_results("Ran", subject)
+                data_dict[f"data{i + 9}"] = subject_data["data"]
+                data_dict[f"labels{i + 9}"] = subject_data["labels"]
+                data_dict[f"count{i + 9}"] = subject_data["count"]
+
+            return Response(data_dict)
 
 
 def progressChart(request, pk):
@@ -378,6 +306,8 @@ def progressChart(request, pk):
         return render(request, "progress_chart_IOE.html")
     if pk == 2:
         return render(request, "progress_chart_IOM.html")
+    if pk == 3:
+        return render(request, "progress_chart_GK.html")
 
 
 def ioe_page(request, pk):
@@ -388,7 +318,6 @@ def ioe_page(request, pk):
 
 def random_page(request, pk):
     mock = MockTest.objects.get(text=pk)
-
     context = {"mock": mock}
     return render(request, "random_page.html", context)
 
