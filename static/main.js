@@ -20,8 +20,21 @@ modalBtns.forEach(modalBtn => modalBtn.addEventListener(
 <li>Time limit:<b>${time} min </b></li>
 </ul>
 `
+        const currentUrl = new URL(window.location.href);
+        const baseUrl = currentUrl.protocol + "//" + currentUrl.hostname + (currentUrl.port ? ':' + currentUrl.port : '');
+        const newUrl = new URL('quizview/' + pk, baseUrl);
+
         startBtn.addEventListener(
             'click', () => {
-                location.replace("http://127.0.0.1:8000/quizview/" + pk)
+                location.replace(newUrl);
             })
+
+
     }))
+    //     startBtn.addEventListener(
+    //         'click', () => {
+    //             location.replace("http://127.0.0.1:8000/quizview/" + pk)
+    //         })
+    // }))
+
+
