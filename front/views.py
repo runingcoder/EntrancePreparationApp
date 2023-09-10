@@ -24,50 +24,6 @@ import csv
 from django.db import transaction
 
 
-# def import_data(request):
-#     # Specify the path to your CSV file
-#     csv_file_path = "/home/achyut42/Desktop/minorProject/csv/front_mocktest.csv"
-
-#     with open(csv_file_path, "r") as file:
-#         reader = csv.DictReader(file)
-#         for row in reader:
-#             text = row["text"]
-#             test_number = int(row["test_number"])
-#             mock_test = MockTest(text=text, test_number=test_number)
-#             mock_test.save()
-
-
-#     return HttpResponse("Data imported successfully!")
-def import_quiz_data(request):
-    # Specify the path to your CSV file
-    csv_file_path = "/home/achyut42/Desktop/minorProject/csv/front_quiz.csv"
-
-    with open(csv_file_path, "r") as file:
-        reader = csv.DictReader(file)
-        for row in reader:
-            quiz = Quiz(
-                id=row["id"],
-                name=row["name"],
-                number_of_questions=row["number_of_questions"],
-                time=row["time"],
-                required_score_to_pass=row["required_score_to_pass"],
-                difficulty=row["difficulty"],
-                mock_id=row["mock_id"],
-            )
-            quiz.save()
-
-    return HttpResponse("Quiz data imported successfully!")
-
-
-def ajax_refresh_captcha(request):
-    to_json_response = dict()
-    to_json_response["new_cptch_key"] = CaptchaStore.generate_key()
-    to_json_response["new_cptch_image"] = captcha_image_url(
-        to_json_response["new_cptch_key"]
-    )
-    return JsonResponse(to_json_response)
-
-
 @transaction.atomic
 def getapi(request):
     response = requests.get(

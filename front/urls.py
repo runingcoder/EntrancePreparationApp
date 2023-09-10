@@ -56,5 +56,5 @@ urlpatterns = [
         ),
         name="password_reset_complete",
     ),
-    path("import/", views.import_quiz_data, name="import_data"),
+    path("import/", views.import_result_data, name="import_data"),
 ]

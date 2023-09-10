@@ -19,7 +19,13 @@ class MockTest(models.Model):
     test_number = models.IntegerField(default=0)
 
     def __str__(self):
-        return str(self.text) + " test number = " + str(self.test_number)
+        return (
+            str(self.text)
+            + " test number = "
+            + str(self.test_number)
+            + "id is "
+            + str(self.id)
+        )
 
 
 class Quiz(models.Model):
