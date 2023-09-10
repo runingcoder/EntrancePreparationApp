@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "front",
     "rest_framework",
     "captcha",
+    "django_extensions",
 ]
 
 MIDDLEWARE = [

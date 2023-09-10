@@ -1,5 +1,6 @@
 from multiprocessing import context
 import pdb
+from django.http import HttpResponse
 from django.shortcuts import render
 from rest_framework.response import Response
 from django.shortcuts import render, redirect
@@ -17,9 +18,45 @@ import requests
 from decouple import config
 from captcha.models import CaptchaStore
 from captcha.helpers import captcha_image_url
+import csv
 
 
 from django.db import transaction
+
+
+# def import_data(request):
+#     # Specify the path to your CSV file
+#     csv_file_path = "/home/achyut42/Desktop/minorProject/csv/front_mocktest.csv"
+
+#     with open(csv_file_path, "r") as file:
+#         reader = csv.DictReader(file)
+#         for row in reader:
+#             text = row["text"]
+#             test_number = int(row["test_number"])
+#             mock_test = MockTest(text=text, test_number=test_number)
+#             mock_test.save()
+
+
+#     return HttpResponse("Data imported successfully!")
+def import_quiz_data(request):
+    # Specify the path to your CSV file
+    csv_file_path = "/home/achyut42/Desktop/minorProject/csv/front_quiz.csv"
+
+    with open(csv_file_path, "r") as file:
+        reader = csv.DictReader(file)
+        for row in reader:
+            quiz = Quiz(
+                id=row["id"],
+                name=row["name"],
+                number_of_questions=row["number_of_questions"],
+                time=row["time"],
+                required_score_to_pass=row["required_score_to_pass"],
+                difficulty=row["difficulty"],
+                mock_id=row["mock_id"],
+            )
+            quiz.save()
+
+    return HttpResponse("Quiz data imported successfully!")
 
 
 def ajax_refresh_captcha(request):
