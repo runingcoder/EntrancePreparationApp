@@ -129,7 +129,16 @@
 			</div>
 		</div>
 	</div>
+	<script>
+		$('input').on('keydown', function(e) {
+			if (e.which == 13) { // 13 is the keycode for the enter key
+				$(this).closest('form').submit();
+			}
+		});
+		</script>
+	
 </body>
+
 
 </html>
 
