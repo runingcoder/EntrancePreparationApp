@@ -67,7 +67,6 @@ $.ajax({
     type: 'GET',
     url: `${url}/data`,
     success: function (response) {
-        console.log(response)
         data = response.data
         var myList = '<ul>';
         data.forEach(el => {
@@ -129,12 +128,15 @@ const sendData = () => {
                 }
             }
         });
+    const currentUrl = new URL(window.location.href);
+    const baseUrl = currentUrl.protocol + "//" + currentUrl.hostname + (currentUrl.port ? ':' + currentUrl.port : '');
     $.ajax({
         type: 'POST',
         url: `${url}/save`,
         data: data,
         success: function (response) {
             const pc = response.pc
+            console.log(pc)
             const quizname = response.quizname
             const results = response.results
             quizForm.hidden = true;
@@ -143,7 +145,9 @@ const sendData = () => {
             const startBtn1 = document.getElementById('start1-button')
             startBtn1.addEventListener(
                 'click', () => {
-                    location.replace("http://127.0.0.1:8000/progress_chart/" + pc)
+                    const newUrl = new URL('progress_chart/' + pc, baseUrl);
+                    location.replace(newUrl);
+
                 })
 
             results.forEach(res => {
