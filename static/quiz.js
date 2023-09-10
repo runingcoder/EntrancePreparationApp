@@ -132,10 +132,11 @@ const sendData = () => {
     const baseUrl = currentUrl.protocol + "//" + currentUrl.hostname + (currentUrl.port ? ':' + currentUrl.port : '');
     $.ajax({
         type: 'POST',
-        url: new URL('save', baseUrl),
+        url: `${url}/save`,
         data: data,
         success: function (response) {
             const pc = response.pc
+            console.log(pc)
             const quizname = response.quizname
             const results = response.results
             quizForm.hidden = true;
@@ -145,6 +146,8 @@ const sendData = () => {
             startBtn1.addEventListener(
                 'click', () => {
                     const newUrl = new URL('progress_chart/' + pc, baseUrl);
+                    location.replace(newUrl);
+
                 })
 
             results.forEach(res => {
