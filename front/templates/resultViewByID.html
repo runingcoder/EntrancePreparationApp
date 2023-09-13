@@ -53,13 +53,14 @@
     {% for question, answer_info in item.items %}
         <li class="result-item">
             <strong>{{ question }}</strong><br>
-            Your Answer: {{ answer_info.answered }}<br>
-            Correct Answer: {{ answer_info.correct_answer }}
+            Your Answer: {{ answer_info.answered }}
             {% if answer_info.answered != '' and answer_info.answered == answer_info.correct_answer %}
-                <span class="bg-success">Correct</span>
-            {% else %}
-                <span class="bg-danger">Incorrect</span>
-            {% endif %}
+            <span class="bg-success">Correct</span>
+        {% else %}
+            <span class="bg-danger">Incorrect</span>
+        {% endif %}<br>
+            Correct Answer: {{ answer_info.correct_answer }}
+           
         </li>
     {% endfor %}
 {% endfor %}

@@ -181,25 +181,23 @@ def save_quiz_view(request, pk):
         
         for q in questions:           
             a_selected = request.POST.get(q.text)        
+            question_answers = Answer.objects.filter(question=q)
+            for a in question_answers:
+                if a.correct:
+                    correct_answer = a.text
+                    break
             if a_selected != "":
-                question_answers = Answer.objects.filter(question=q)
                 for a in question_answers:
-                    if a_selected == a.text:
-                        if a.correct:
-                            score += 1
-                            correct_answer = a.text
-                    else:
-                        if a.correct:
-                            correct_answer = a.text
+                    if a_selected == a.text and a.correct:
+                        score += 1
 
                 results.append(
                     {str(q): {"correct_answer": correct_answer, "answered": a_selected}}
                 )
-                
             else:
-                results.append({str(q): {"correct_answer": correct_answer, "answered": ''}}
-)
-        # print(results)
+                results.append({str(q): {"correct_answer": correct_answer, "answered": ''}})
+
+                # print(results)
         score_ = score * multiplier
         resultItem  = Result.objects.create(quiz=quiz, user=user, score=score_, resultsField = results, passed= score_ >= quiz.required_score_to_pass,progresschartid = progresschartid,  date_attempted= datetime.now(tz=timezone.utc))
     return JsonResponse(

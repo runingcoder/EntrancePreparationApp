@@ -125,24 +125,30 @@ const sendData = () => {
             }
         });
 
+
     const currentUrl = new URL(window.location.href);
     const baseUrl = currentUrl.protocol + "//" + currentUrl.hostname + (currentUrl.port ? ':' + currentUrl.port : '');
-    $.ajax({
-        type: 'POST',
-        url: `${url}/save`,
-        data: data,
+    async function postData() {
+        try {
+            let response = await $.ajax({
+                type: 'POST',
+                url: `${url}/save`,
+                data: data
+            });
 
-        success: function (response) {
             console.log("successfully retrieved response to a new page. Result id is ", response.resultID)
             const resultID = response.resultID
             const newUrl = new URL('viewResult/' + resultID, baseUrl);
-            window.location.href = newUrl.href;
-        },
-        error: function (error) {
+            window.location.href = newUrl;
+        } catch (error) {
             console.log(error)
         }
-    })
+    }
+
+    postData();
 }
+
+
 
 quizForm.addEventListener('submit', e => {
     e.preventDefault()
