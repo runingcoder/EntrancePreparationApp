@@ -83,6 +83,8 @@ def loginPage(request):
         if user is not None:
             login(request, user)
             return redirect("index")
+        else:
+            messages.error(request, "Wrong credentials. Please try again.")
 
     context = {}
     return render(request, "login.html", context)
@@ -211,7 +213,7 @@ def viewResultByID(request, pk):
     return render(request, 'resultViewByID.html', context)
 
 def viewResult(request):
-    result = Result.objects.filter(user =request.user).order_by('date_attempted')
+    result = Result.objects.filter(user =request.user).order_by('-date_attempted')
     context = {
         "result" :result
     }

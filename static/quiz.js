@@ -67,49 +67,45 @@ $.ajax({
     type: 'GET',
     url: `${url}/data`,
     success: function (response) {
-        data = response.data
+        data = response.data;
         var myList = '<ul>';
         data.forEach(el => {
             for (const [question, answers] of Object.entries(el)) {
                 counter++;
-                //pretty useful code
+                // Pretty useful code
                 quizBox.innerHTML += `                    
-<div class ='mb-3'>
-<b class="h5">${counter}. ${question}</b>	
-</div>`
-                randomArrayShuffle(answers)
+                    <div class='mb-3'>
+                        <b class="h5">${counter}. ${question}</b>
+                    </div>`;
+
+                randomArrayShuffle(answers);
                 answers.forEach(answer => {
-                    quizBox.innerHTML += `<div>
-<input  type ='radio' class ='ans form-check-input' id = '${question}-${answer}' name ='${question}' value='${answer}'>
-
-<label  class ='form-check-label' for='${question}'>${answer}</label>
-
-</div>
-
-<style>
-
-div.mb-3{
-font-size:1.4rem;}
-
-input[type=radio] {
-    height:20px;
-    width:20px;
-    margin-left:18px;
-}
-
-
-</style>
-<br>
-`
-                })
+                    quizBox.innerHTML += `
+                        <div>
+                            <input type='radio' class='ans form-check-input' id='${question}-${answer}' name='${question}' value='${answer}'>
+                            <label class='form-check-label' for='${question}'>${answer}</label>
+                        </div>
+                        <style>
+                            div.mb-3 {
+                                font-size: 1.4rem;
+                            }
+                            input[type=radio] {
+                                height: 20px;
+                                width: 20px;
+                                margin-left: 18px;
+                            }
+                        </style>
+                        <br>`;
+                });
             }
         });
-        activateTimer(response.time)
+        activateTimer(response.time);
     },
     error: function (error) {
-        console.log(error)
+        console.log(error);
     }
-})
+});
+
 // for submit button response, the following code exists
 const quizForm = document.getElementById('quiz-form')
 const csrf = document.getElementsByName('csrfmiddlewaretoken')

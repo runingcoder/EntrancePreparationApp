@@ -1,52 +1,69 @@
-{% extends 'main.html' %} {% load static %} {% block content %}
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
 <style>
-    .QA{
+    .QA {
         display: flex;
         justify-content: center;
         flex-direction: column;
         align-items: center;
-        gap:2rem;
+        gap: 2rem;
         padding: 0rem 3rem;
     }
+
     .topContent {
         display: flex;
         justify-content: center;
         flex-direction: column;
         align-items: center;
-        margin-top:2rem;
-     
+        margin-top: 2rem;
+    }
+
+    .result-item {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .bg-danger {
+        background-color: red; /* Red for incorrect answers */
+    }
+
+    .bg-success {
+        background-color: green; /* Green for correct answers */
     }
 </style>
-<span class="topContent" style="font-size:40px;margin-left:2rem;padding-bottom:2rem">
+<div class="topContent" style="font-size:40px;margin-left:2rem;padding-bottom:2rem">
     {% if result.passed %}
         Braviii!
     {% else %}
         Oops!
     {% endif %}
     Your result is {{ result.score|floatformat:2 }} %
-   
-    
-    <h2>See the progress chart of {{ quizname }} here: <button type="button" class="btn btn-primary" onclick="window.location.href='{% url 'progress_chart' result.progresschartid %}'">Results</button></h2>
-    <button type="button" class="btn btn-outline-primary" onclick="window.location.href='{% url 'quizview' result.quiz.id %}'">Retake test</button></h2></span>
-    <div class="QA">
-        <h2>Questions and Answers:</h2>
-        {{result.resultsField}}
-        <ul class="result-list">
-            {% for result_item in result.resultsField %}
-                {% with result_item|dictsort:"0" as sorted_result %}
-                    {% for question, answer in sorted_result %}
-                        <li>
-                            <strong>{{ question }}</strong><br>
-                            Your Answer: {{ answer.answered }}<br>
-                            Correct Answer: {{ answer.correct_answer }}
-                        </li>
-                    {% endfor %}
-                {% endwith %}
-            {% endfor %}
-        </ul>
-    </div>
-   
-    
+    <h2>
+        See the progress chart of {{ quizname }} here:
+        <button type="button" class="btn btn-primary" onclick="window.location.href='{% url 'progress_chart' result.progresschartid %}'">Results</button>
+    </h2>
+    <button type="button" class="btn btn-outline-primary" onclick="window.location.href='{% url 'quizview' result.quiz.id %}'">Retake test</button>
+</div>
+<div class="QA">
+<h2>Questions and Answers:</h2>
 
-<!-- ------ -->
+<ul class="result-list">
+    {% for item in result.resultsField %}
+        {% for question, answer_info in item.items %}
+            <li class="result-item">
+                <strong>{{ question }}</strong><br>
+                Your Answer: {{ answer_info.answered }}<br>
+                Correct Answer: {{ answer_info.correct_answer }}
+                {% if answer_info.answered == answer_info.correct_answer %}
+                    <span class="bg-success">Correct</span>
+                {% else %}
+                    <span class="bg-danger">Incorrect</span>
+                {% endif %}
+            </li>
+        {% endfor %}
+    {% endfor %}
+</ul>
+
+</div>
 {% endblock content %}
