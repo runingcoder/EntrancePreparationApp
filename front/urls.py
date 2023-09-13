@@ -15,6 +15,8 @@ urlpatterns = [
     path("random_quizlist/<str:pk>", views.random_quizlist, name="random_quizlist"),
     path("quizview/<str:pk>/data", views.quiz_data_view, name="quiz_data_view"),
     path("quizview/<str:pk>/save", views.save_quiz_view, name="save_quiz_view"),
+    path("viewResult/<str:pk>", views.viewResultByID, name="viewResultByID"),
+    path("viewResult", views.viewResult, name="viewResult"),
     path("quizview/<str:pk>", views.quizview, name="quizview"),
     path("mock_test/", views.mocktest, name="mock_test"),
     path("ioe_page/<str:pk>/", views.ioe_page, name="ioe_page"),
@@ -55,5 +57,4 @@ urlpatterns = [
             template_name="password_reset_done.html"
         ),
         name="password_reset_complete",
-    ),
-]
+    ),]

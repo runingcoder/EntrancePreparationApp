@@ -1,0 +1,33 @@
+{% extends 'main.html' %} {% load static %} {% block content %}
+<div class="result-container">
+    <h1>Quiz Result</h1>
+    <p class="result-text">
+        Congratulations! You have completed the quiz with a score of {{ result.score }}%.
+    </p>
+    <p>
+        {% if result.passed %}
+            You have passed the quiz.
+        {% else %}
+            Unfortunately, you did not pass the quiz.
+        {% endif %}
+    </p>
+    
+    <h2>Questions and Answers:</h2>
+    {{result.resultsField}}
+    <ul class="result-list">
+        {% for result_item in result.resultsField %}
+            {% with result_item|dictsort:"0" as sorted_result %}
+                {% for question, answer in sorted_result %}
+                    <li>
+                        <strong>{{ question }}</strong><br>
+                        Your Answer: {{ answer.answered }}<br>
+                        Correct Answer: {{ answer.correct_answer }}
+                    </li>
+                {% endfor %}
+            {% endwith %}
+        {% endfor %}
+    </ul>
+    
+
+<!-- ------ -->
+{% endblock content %}

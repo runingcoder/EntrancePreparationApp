@@ -1,0 +1,36 @@
+{% extends 'main.html' %} {% load static %} {% block content %}
+<style>
+    .result-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.result-item {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    margin: 10px 0;
+    padding: 10px;
+}
+
+.btn-primary {
+    margin-top: 20px;
+}
+
+</style>
+<div class="container">
+    <h2>Attempted Questions:</h2>
+
+    <ul class="result-list">
+        {% for result_item in result %}
+            <li class="result-item">
+                <strong>{{ result_item.quiz.getNameInResult }}</strong><br>
+                Your Score: {{ result_item.score }}%<br>
+                Date Attempted: {{ result_item.date_attempted|date:"F d, Y H:i" }}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="javascript:history.go(-1)" class="btn btn-primary">Go Back</a>
+</div>
+
+{% endblock content %}

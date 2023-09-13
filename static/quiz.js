@@ -128,56 +128,20 @@ const sendData = () => {
                 }
             }
         });
+
     const currentUrl = new URL(window.location.href);
     const baseUrl = currentUrl.protocol + "//" + currentUrl.hostname + (currentUrl.port ? ':' + currentUrl.port : '');
     $.ajax({
         type: 'POST',
         url: `${url}/save`,
         data: data,
+
         success: function (response) {
-            const pc = response.pc
-            console.log(pc)
-            const quizname = response.quizname
-            const results = response.results
-            quizForm.hidden = true;
-            scoreBox.innerHTML = `<span class="d-inline-block" style='font-size:40px;margin-left:15%;padding-bottom:50px'>
-    ${response.passed ? 'Braviii! ' : ' Oops! '}Your result is ${response.score.toFixed(2)} % <a href="javascript:history.go(-1)" style="font-weight:bold;border-width:medium;margin-left: 500px;" class="btn btn-outline-danger mt-2"><span class="h5">Go Back</span></a><br> See the progress chart of ${quizname} here: <button type="button" id="start1-button" class="btn btn-secondary">Results</button></span> `
-            const startBtn1 = document.getElementById('start1-button')
-            startBtn1.addEventListener(
-                'click', () => {
-                    const newUrl = new URL('progress_chart/' + pc, baseUrl);
-                    location.replace(newUrl);
+            console.log("successfully retrieved response to a new page. Result id is ", response.resultID)
+            const resultID = response.resultID
+            const newUrl = new URL('viewResult/' + resultID, baseUrl);
+            window.location.href = newUrl;
 
-                })
-
-            results.forEach(res => {
-                const resDiv = document.createElement("div")
-                for (const [question, resp] of Object.entries(res)) {
-
-                    resDiv.innerHTML += question
-                    const cls = ['container', 'p-3', 'text-light', 'h6']
-                    resDiv.classList.add(...cls)
-
-                    if (resp == 'not answered') {
-                        resDiv.innerHTML += '- not answered'
-                        resDiv.classList.add('bg-danger')
-                    } else {
-                        const answer = resp['answered']
-                        const correct = resp['correct_answer']
-
-                        if (answer == correct) {
-                            resDiv.classList.add('bg-success')
-                            resDiv.innerHTML += ` answered: ${answer}`
-                        } else {
-                            resDiv.classList.add('bg-danger')
-                            resDiv.innerHTML += ` | correct answer: ${correct}`
-                            resDiv.innerHTML += ` | answered: ${answer}`
-                        }
-                    }
-                }
-                resultBox.append(resDiv)
-
-            })
 
         },
         error: function (error) {

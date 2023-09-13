@@ -154,14 +154,13 @@ def is_ajax(request):
 def save_quiz_view(request, pk):
     if is_ajax(request=request):
         questions = []
-        data = request.POST
+        data = request.POST        
         data_ = dict(data.lists())
         data_.pop("csrfmiddlewaretoken")
         for k in data_.keys():
             question = Question.objects.filter(text=k).first()
             questions.append(question)
-        print(questions)
-
+        print(questions)       
         user = request.user
         quiz = Quiz.objects.get(pk=pk)
         quizn = quiz.mock.text
@@ -176,9 +175,12 @@ def save_quiz_view(request, pk):
         multiplier = 100 / quiz.number_of_questions
         results = []
         correct_answer = None
-
-        for q in questions:
+        
+        for q in questions:           
             a_selected = request.POST.get(q.text)
+            # import pdb
+            # pdb.set_trace()
+            print('selected', a_selected)
             if a_selected != "":
                 question_answers = Answer.objects.filter(question=q)
                 for a in question_answers:
@@ -197,29 +199,25 @@ def save_quiz_view(request, pk):
                 results.append({str(q): "not answered"})
 
         score_ = score * multiplier
-        Result.objects.create(quiz=quiz, user=user, score=score_)
+        resultItem  = Result.objects.create(quiz=quiz, user=user, score=score_, resultsField = results, passed= score_ >= quiz.required_score_to_pass,progresschartid = progresschartid)
+    return JsonResponse(
+                { 'resultID': resultItem.id })          
+    
+  
+        
+def viewResultByID(request, pk):
+    result = Result.objects.get(pk =pk)
+    context = {
+        "result" :result
+    }
+    return render(request, 'resultViewByID.html', context)
 
-        if score_ >= quiz.required_score_to_pass:
-            return JsonResponse(
-                {
-                    "passed": True,
-                    "score": score_,
-                    "results": results,
-                    "quizname": quizname,
-                    "pc": progresschartid,
-                }
-            )
-        else:
-            return JsonResponse(
-                {
-                    "passed": False,
-                    "score": score_,
-                    "results": results,
-                    "quizname": quizname,
-                    "pc": progresschartid,
-                }
-            )
-
+def viewResult(request):
+    result = Result.objects.filter(user =request.user)
+    context = {
+        "result" :result
+    }
+    return render(request, 'resultView.html', context)
 
 class ChartData(APIView):
     def get(self, request, pk=None):
@@ -373,3 +371,8 @@ def quiz_data_view(request, pk):
             "time": quiz.time,
         }
     )
+
+from django.http import JsonResponse
+
+
+

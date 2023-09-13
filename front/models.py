@@ -19,7 +19,7 @@ class MockTest(models.Model):
     test_number = models.IntegerField(default=0)
 
     def __str__(self):
-        return str(self.text) + " test number = " + str(self.test_number)
+        return str(self.text) 
 
 
 class Quiz(models.Model):
@@ -32,6 +32,9 @@ class Quiz(models.Model):
 
     def __str__(self):
         return str(self.name) + " test number = " + str(self.mock.test_number)
+    def getNameInResult(self):
+        return str(self.name) + ' in ' +str(self.mock.text)
+
 
     def get_questions(self):
         questions = list(self.question_set.all())
@@ -66,6 +69,12 @@ class Result(models.Model):
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     score = models.FloatField()
+    date_attempted = models.DateTimeField(auto_now_add=True, null=True)  # Date and time of the attempt
+    resultsField = models.JSONField(null=True)
+    passed = models.BooleanField(null=True)
+    progresschartid = models.IntegerField(null=True)
+
 
     def __str__(self):
         return f" {str(self.pk)} and score is {str(self.score)}"
+    
