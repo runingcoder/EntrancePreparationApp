@@ -1,5 +1,6 @@
+from django.utils import timezone
+from datetime import *
 from multiprocessing import context
-import pdb
 from django.shortcuts import render
 from rest_framework.response import Response
 from django.shortcuts import render, redirect
@@ -160,7 +161,7 @@ def save_quiz_view(request, pk):
         for k in data_.keys():
             question = Question.objects.filter(text=k).first()
             questions.append(question)
-        print(questions)       
+        
         user = request.user
         quiz = Quiz.objects.get(pk=pk)
         quizn = quiz.mock.text
@@ -177,10 +178,7 @@ def save_quiz_view(request, pk):
         correct_answer = None
         
         for q in questions:           
-            a_selected = request.POST.get(q.text)
-            # import pdb
-            # pdb.set_trace()
-            print('selected', a_selected)
+            a_selected = request.POST.get(q.text)        
             if a_selected != "":
                 question_answers = Answer.objects.filter(question=q)
                 for a in question_answers:
@@ -199,7 +197,7 @@ def save_quiz_view(request, pk):
                 results.append({str(q): "not answered"})
 
         score_ = score * multiplier
-        resultItem  = Result.objects.create(quiz=quiz, user=user, score=score_, resultsField = results, passed= score_ >= quiz.required_score_to_pass,progresschartid = progresschartid)
+        resultItem  = Result.objects.create(quiz=quiz, user=user, score=score_, resultsField = results, passed= score_ >= quiz.required_score_to_pass,progresschartid = progresschartid,  date_attempted= datetime.now())
     return JsonResponse(
                 { 'resultID': resultItem.id })          
     
@@ -213,7 +211,7 @@ def viewResultByID(request, pk):
     return render(request, 'resultViewByID.html', context)
 
 def viewResult(request):
-    result = Result.objects.filter(user =request.user)
+    result = Result.objects.filter(user =request.user).order_by('date_attempted')
     context = {
         "result" :result
     }
@@ -226,7 +224,7 @@ class ChartData(APIView):
                 user_id=request.user.id,
                 quiz__mock__text__startswith=mock_startswith,
                 quiz__name=subject_name,
-            )
+            ).order_by('date_attempted') 
             labels = []
             data = []
             count = 0

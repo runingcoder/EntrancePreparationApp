@@ -1,9 +1,21 @@
-{% extends 'main.html' %} {% load static %} {% block content %}
+{% extends 'main.html' %} {% load static %}
+ {% block content %}
+
 <style>
-    .result-list {
+    .container {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    h2{
+        margin:2rem 0rem;
+    }
+.result-list {
     list-style-type: none;
     padding: 0;
+    width: 80%;
 }
+
 
 .result-item {
     background-color: #f0f0f0;
@@ -15,6 +27,12 @@
 .btn-primary {
     margin-top: 20px;
 }
+.result-link {
+    /* Add your CSS styling here */
+    color: blue; /* Example: Blue color for links */
+    text-decoration: underline; /* Example: Underline for links */
+    /* Add more styles as needed */
+}
 
 </style>
 <div class="container">
@@ -23,14 +41,16 @@
     <ul class="result-list">
         {% for result_item in result %}
             <li class="result-item">
-                <strong>{{ result_item.quiz.getNameInResult }}</strong><br>
+                <a href="{% url 'viewResultByID' result_item.id %}" class="result-link">
+                    <strong>{{ result_item.quiz.getNameInResult }}</strong><br>
+                </a>
                 Your Score: {{ result_item.score }}%<br>
-                Date Attempted: {{ result_item.date_attempted|date:"F d, Y H:i" }}
+                Date Attempted: {{ result_item.date_attempted|date:"  H:i A, F d, Y"|default:"Unknown" }}
             </li>
         {% endfor %}
     </ul>
 
-    <a href="javascript:history.go(-1)" class="btn btn-primary">Go Back</a>
 </div>
+
 
 {% endblock content %}

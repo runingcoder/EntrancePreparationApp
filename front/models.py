@@ -69,9 +69,9 @@ class Result(models.Model):
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     score = models.FloatField()
-    date_attempted = models.DateTimeField(auto_now_add=True, null=True)  # Date and time of the attempt
     resultsField = models.JSONField(null=True)
     passed = models.BooleanField(null=True)
+    date_attempted = models.DateTimeField(null=True, default=None)
     progresschartid = models.IntegerField(null=True)
 
 

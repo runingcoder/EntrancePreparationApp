@@ -1,32 +1,51 @@
 {% extends 'main.html' %} {% load static %} {% block content %}
-<div class="result-container">
-    <h1>Quiz Result</h1>
-    <p class="result-text">
-        Congratulations! You have completed the quiz with a score of {{ result.score }}%.
-    </p>
-    <p>
-        {% if result.passed %}
-            You have passed the quiz.
-        {% else %}
-            Unfortunately, you did not pass the quiz.
-        {% endif %}
-    </p>
+<style>
+    .QA{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        gap:2rem;
+        padding: 0rem 3rem;
+    }
+    .topContent {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        margin-top:2rem;
+     
+    }
+</style>
+<span class="topContent" style="font-size:40px;margin-left:2rem;padding-bottom:2rem">
+    {% if result.passed %}
+        Braviii!
+    {% else %}
+        Oops!
+    {% endif %}
+    Your result is {{ result.score|floatformat:2 }} %
+   
     
-    <h2>Questions and Answers:</h2>
-    {{result.resultsField}}
-    <ul class="result-list">
-        {% for result_item in result.resultsField %}
-            {% with result_item|dictsort:"0" as sorted_result %}
-                {% for question, answer in sorted_result %}
-                    <li>
-                        <strong>{{ question }}</strong><br>
-                        Your Answer: {{ answer.answered }}<br>
-                        Correct Answer: {{ answer.correct_answer }}
-                    </li>
-                {% endfor %}
-            {% endwith %}
-        {% endfor %}
-    </ul>
+    <h2>See the progress chart of {{ quizname }} here: <button type="button" class="btn btn-primary" onclick="window.location.href='{% url 'progress_chart' result.progresschartid %}'">Results</button></h2>
+    <button type="button" class="btn btn-outline-primary" onclick="window.location.href='{% url 'quizview' result.quiz.id %}'">Retake test</button></h2></span>
+    <div class="QA">
+        <h2>Questions and Answers:</h2>
+        {{result.resultsField}}
+        <ul class="result-list">
+            {% for result_item in result.resultsField %}
+                {% with result_item|dictsort:"0" as sorted_result %}
+                    {% for question, answer in sorted_result %}
+                        <li>
+                            <strong>{{ question }}</strong><br>
+                            Your Answer: {{ answer.answered }}<br>
+                            Correct Answer: {{ answer.correct_answer }}
+                        </li>
+                    {% endfor %}
+                {% endwith %}
+            {% endfor %}
+        </ul>
+    </div>
+   
     
 
 <!-- ------ -->
