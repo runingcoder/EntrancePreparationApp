@@ -1,7 +1,7 @@
 # Entrance Preparation App
 
-This is an entrance preparation app that has quiz functionality where students can attempt different question sets on IOE and IOM fields.
-They can track their progress by creating their own account and see their progress in charts too.
+This entrance preparation app has quiz functionality where students can attempt different question sets on IOE and IOM fields.
+They can track their progress by creating their own account and see their progress in charts.
 
 ## Technology used:
 Python, Django, Javascript, HTML, CSS
@@ -12,7 +12,7 @@ Python, Django, Javascript, HTML, CSS
 3. Activate the environment: `myenv\Scripts\activate`(for Windows), `source myenv/bin/activate`(Linux)
 4. Install the requirements: `pip install -r requirements.txt`
 5. Setup the pgadmin in your pc: [https://computingforgeeks.com/how-to-install-pgadmin-4-on-ubuntu/](https://computingforgeeks.com/how-to-install-pgadmin-4-on-ubuntu/)
-6. Make a database and import the sql file.
+6. Make a database and import the SQL file.
 67. Run the following commands:
     ```
     python manage.py makemigrations
@@ -27,6 +27,8 @@ Python, Django, Javascript, HTML, CSS
 <img src = "images/quiz.png" width = "800" height = '600'><br>
 <img src = "images/progress.png" width = "800" height = '600'><br>
 
+## Deployment:
+You can find the live working site of this project on this site: https://entranceprep.nepaldigitalmarketing.com/
 
 ## Credit
-This project was completed as a part of Minor project of the curriculum of third year of the department of Electronics and Computer Engineering in Pulchowk Campus.
+This project was completed as a part of a Minor project of the curriculum of the third year of the Department of Electronics and Computer Engineering in Pulchowk Campus.
