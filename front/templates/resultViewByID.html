@@ -50,19 +50,22 @@
 
 <ul class="result-list">
     {% for item in result.resultsField %}
-        {% for question, answer_info in item.items %}
-            <li class="result-item">
-                <strong>{{ question }}</strong><br>
-                Your Answer: {{ answer_info.answered }}<br>
-                Correct Answer: {{ answer_info.correct_answer }}
-                {% if answer_info.answered == answer_info.correct_answer %}
-                    <span class="bg-success">Correct</span>
-                {% else %}
-                    <span class="bg-danger">Incorrect</span>
-                {% endif %}
-            </li>
-        {% endfor %}
+    {% for question, answer_info in item.items %}
+        <li class="result-item">
+            <strong>{{ question }}</strong><br>
+            Your Answer: {{ answer_info.answered }}<br>
+            Correct Answer: {{ answer_info.correct_answer }}
+            {% if answer_info.answered != '' and answer_info.answered == answer_info.correct_answer %}
+                <span class="bg-success">Correct</span>
+            {% else %}
+                <span class="bg-danger">Incorrect</span>
+            {% endif %}
+        </li>
     {% endfor %}
+{% endfor %}
+
+
+   
 </ul>
 
 </div>

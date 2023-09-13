@@ -121,7 +121,6 @@ def send_email_contact(request):
         subject = request.POST.get("subject")
         message = request.POST.get("message")
         if form.is_valid():
-            print("Captcha validation success")
             data = {
                 "name": name,
                 "email": email,
@@ -157,7 +156,8 @@ def is_ajax(request):
 def save_quiz_view(request, pk):
     if is_ajax(request=request):
         questions = []
-        data = request.POST        
+        data = request.POST   
+        # print(data)     
         data_ = dict(data.lists())
         data_.pop("csrfmiddlewaretoken")
         for k in data_.keys():
@@ -195,11 +195,13 @@ def save_quiz_view(request, pk):
                 results.append(
                     {str(q): {"correct_answer": correct_answer, "answered": a_selected}}
                 )
+                
             else:
-                results.append({str(q): "not answered"})
-
+                results.append({str(q): {"correct_answer": correct_answer, "answered": ''}}
+)
+        # print(results)
         score_ = score * multiplier
-        resultItem  = Result.objects.create(quiz=quiz, user=user, score=score_, resultsField = results, passed= score_ >= quiz.required_score_to_pass,progresschartid = progresschartid,  date_attempted= datetime.now())
+        resultItem  = Result.objects.create(quiz=quiz, user=user, score=score_, resultsField = results, passed= score_ >= quiz.required_score_to_pass,progresschartid = progresschartid,  date_attempted= datetime.now(tz=timezone.utc))
     return JsonResponse(
                 { 'resultID': resultItem.id })          
     

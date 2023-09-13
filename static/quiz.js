@@ -136,9 +136,7 @@ const sendData = () => {
             console.log("successfully retrieved response to a new page. Result id is ", response.resultID)
             const resultID = response.resultID
             const newUrl = new URL('viewResult/' + resultID, baseUrl);
-            window.location.href = newUrl;
-
-
+            window.location.href = newUrl.href;
         },
         error: function (error) {
             console.log(error)
