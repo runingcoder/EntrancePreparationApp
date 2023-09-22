@@ -32,7 +32,7 @@
 
 <div class="wrapper">
     {% for obj in quiz %}
-    <button class="btn btn-link modal-button" data-pk="{{obj.pk}}" data-quiz="{{obj.name}}" data-questions="{{obj.number_of_questions}}" data-difficulty="{{obj.difficulty}}" data-time="{{obj.time}}" data-pass="{{obj.required_score_to_pass}}" data-bs-target="#quizStartModal"
+    <button style="text-decoration: none;" class="btn btn-link modal-button" data-pk="{{obj.pk}}" data-quiz="{{obj.name}}" data-questions="{{obj.number_of_questions}}" data-difficulty="{{obj.difficulty}}" data-time="{{obj.time}}" data-pass="{{obj.required_score_to_pass}}" data-bs-target="#quizStartModal"
         data-bs-toggle="modal">
   
   <div>{{obj.name}}</div>

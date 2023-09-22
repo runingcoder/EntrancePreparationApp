@@ -1,26 +1,19 @@
 {% load static %}
 <!doctype html>
 <html lang="en" class="h-100">
-
-
-
-
-
-
-    <footer class="  containerfooter">
-            <span class='initialtext' style="color: white;">Copyright © 2022 Entrance Preparation. </span>
-            <div class="elements">
-                <a class="text-white second-one" href="{% url 'services' %}">Services </a>
-                <a class="text-white" href="{% url 'about' %}">About </a>
-                <a class="text-white" href="{% url 'contact' %}">Contact </a>
-            </div>
-    </footer>
-
-
+<footer class="  containerfooter">
+    <span class='initialtext' style="color: white;">Copyright © 2022 Entrance Preparation. </span>
+    <div class="elements">
+        <a class="text-white second-one" href="{% url 'services' %}">Services </a>
+        <a class="text-white" href="{% url 'about' %}">About </a>
+        <a class="text-white" href="{% url 'contact' %}">Contact </a>
+    </div>
+</footer>
 <style>
-     a {
-     text-decoration: none;
-     }
+    a {
+        text-decoration: none;
+    }
+
     .elements {
         margin-right: 2rem;
         display: flex;
@@ -30,11 +23,11 @@
         gap: 2rem;
 
     }
-    
+
 
     .initialtext {
         padding: 0 2rem;
-            }
+    }
 
     .containerfooter {
         background-color: black;
@@ -56,7 +49,7 @@
 
         .elements {
             flex-direction: column;
-            
+
 
         }
     }
