@@ -1,35 +1,50 @@
 
-
-
 {% extends 'main.html' %}
 {% load static %}
 {% block content %}
-<div id="services" class="row me-5 ms-5">
-    <div class="col-4">
+<div id="services" >
+  <div class="servicebox">
     <a href="{% url 'reading_material' %}">
       <img id="img1" onmouseover="document.getElementById('img1').style.opacity='0.8'" 
         onmouseout="document.getElementById('img1').style.opacity='1'"
         src="{% static 'reading_materials.png' %}" width='100%' class="p-4 border border-dark border-2 rounded-end"/>
     </a>
-    </div>
-    <div class="col-4">
+ 
+  </div>
+   
+  <div class="servicebox">
+
     <a href="{% url 'mock_test' %}">
       <img id="img2" onmouseover="document.getElementById('img2').style.opacity='0.8'" 
         onmouseout="document.getElementById('img2').style.opacity='1'" 
         src="{% static 'mock_test.png' %}" width='100%' class="p-4 border border-dark border-2 rounded"/>
       </a>
     </div>
-    <div class="col-4">
+   
+      <div class="servicebox">
+
     <a href="{% url 'progress_chart' 1 %}">
       <img id="img3" onmouseover="document.getElementById('img3').style.opacity='0.8'" 
         onmouseout="document.getElementById('img3').style.opacity='1'" 
         src="{% static 'progressiveness_evaluation.png' %}" width='100%' class="p-4 border border-dark border-2 rounded-start"/>
     </a>
-    </div>
+  </div>
+   
   </div>
   <style>
-    #services{
+    .servicebox {
+      height: 20rem;
+      width: 20rem;
+
+    }
+     #services{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 3rem;
+      flex-wrap: wrap;
       padding-top: 100px;
+      margin-bottom: 4rem;
     }
   </style>
   {% endblock %}

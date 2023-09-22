@@ -3,18 +3,65 @@
 <html lang="en" class="h-100">
 
 
-<div id ="page-container">
 
-    <footer class=" fixed-bottom mt-auto py-1 bg-dark ">
-        <div class="container">
-            <span class="text-white">Copyright ©   2022 Entrance Preparation. All rights are owned by this site. </span>
-            <a class="text-white second-one" href="{% url 'terms' %}">Terms and Condition. </a>
-            <a class="text-white" href="{% url 'privacy' %}">Privacy Policy </a>
-        </div>
 
+
+
+    <footer class="  containerfooter">
+            <span class='initialtext' style="color: white;">Copyright © 2022 Entrance Preparation. </span>
+            <div class="elements">
+                <a class="text-white second-one" href="{% url 'services' %}">Services </a>
+                <a class="text-white" href="{% url 'about' %}">About </a>
+                <a class="text-white" href="{% url 'contact' %}">Contact </a>
+            </div>
     </footer>
-</div>
-   
+
+
+<style>
+     a {
+     text-decoration: none;
+     }
+    .elements {
+        margin-right: 2rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-self: center;
+        gap: 2rem;
+
+    }
+    
+
+    .initialtext {
+        padding: 0 2rem;
+            }
+
+    .containerfooter {
+        background-color: black;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    @media (max-width: 768px) {
+        .containerfooter {
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .initialtext {
+            padding: 0 4rem;
+        }
+
+        .elements {
+            flex-direction: column;
+            
+
+        }
+    }
+</style>
+
 
 
 
