@@ -80,14 +80,14 @@ WSGI_APPLICATION = "minor.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
+        "ENGINE": "django.db.backends.mysql",
         # set database name
         "NAME": config("DB_NAME"),
         # set your user details
         "USER": config("DB_USER"),
         "PASSWORD": config("DB_PASSWORD"),
         "HOST": config("DB_HOST"),
-        "POST": config("DB_POST"),
+        "POST": config("DB_PORT"),
     }
 }
 

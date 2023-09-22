@@ -203,15 +203,15 @@ def save_quiz_view(request, pk):
     return JsonResponse(
                 { 'resultID': resultItem.id })          
     
-  
-        
+
+@login_required(login_url="login")     
 def viewResultByID(request, pk):
     result = Result.objects.get(pk =pk)
     context = {
         "result" :result
     }
     return render(request, 'resultViewByID.html', context)
-
+@login_required(login_url="login")
 def viewResult(request):
     result = Result.objects.filter(user =request.user).order_by('-date_attempted')
     context = {
