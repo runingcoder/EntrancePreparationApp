@@ -1,7 +1,7 @@
 {% load static %}
 <!doctype html>
 <html lang="en" class="h-100">
-<footer class="  containerfooter">
+<footer class="fixed-bottom containerfooter">
     <span class='initialtext' style="color: white;">Copyright © 2022 Entrance Preparation. </span>
     <div class="elements">
         <a class="text-white second-one" href="{% url 'services' %}">Services </a>
@@ -20,7 +20,7 @@
         flex-direction: row;
         justify-content: space-between;
         align-self: center;
-        gap: 2rem;
+        gap: 0.5rem;
 
     }
 
@@ -40,7 +40,7 @@
     @media (max-width: 768px) {
         .containerfooter {
             flex-direction: column;
-            gap: 1rem;
+            gap: 0.2rem;
         }
 
         .initialtext {
