@@ -37,19 +37,19 @@ window.onclick = function(event) {
 <!-- nav bar fixed closed -->
 
 <!-- header -->
-<div >
+<div style="margin-bottom: 4rem;" >
 <img src="{% static 'banner.jpg' %}" width = "100%">
 </div>
 <!-- header close -->
 
 <!-- intro for web -->
-<div class="row m-5">
-  <div class="col-6">
-   <p class='h1'>What is it all about?</p>
-	<p >	There is also evaluation scheme which shows how well he/she is prepared for entrance exam and this evaluation is based on the his/her performance in the dummy exams. As this app allows anyone to prepare for the entrance exam from their home at any time, it really saves time and makes the preparation more efficient.</p>
+<div class="containerRow">
+  <div class="container-element">
+   <p class='heading1'>What is it all about?</p>
+	<p>There is also evaluation scheme which shows how well he/she is prepared for entrance exam and this evaluation is based on the his/her performance in the dummy exams. As this app allows anyone to prepare for the entrance exam from their home at any time, it really saves time and makes the preparation more efficient.</p>
   </div>
-  <div class="col-6">
-   <p class='h1'>Beating Physical Restrictions!</p>
+  <div class="container-element">
+   <p class='heading1'>Beating Physical Stricture!</p>
 	<p>	It may also not be possible for all the people to join institution who resides far away from learning institution. So to overcome those drawbacks of the existing old fashioned system we require a system which can make the preparation virtually with the help of app.</p>
   </div>
 </div>
@@ -57,21 +57,21 @@ window.onclick = function(event) {
 
 <!-- photo link -->
 <div id="services" class="row me-5 ms-5">
-  <div class="col-4">
+  <div class="servicebox">
   <a href="{% url 'reading_material' %}">
 	<img id="img1" onmouseover="document.getElementById('img1').style.opacity='0.8'" 
 	  onmouseout="document.getElementById('img1').style.opacity='1'"
 	  src="{% static 'reading_materials.png' %}" width='100%' class="p-4 border border-dark border-2 rounded-end"/>
   </a>
   </div>
-  <div class="col-4">
+  <div class="servicebox">
   <a href="{% url 'mock_test' %}">
 	<img id="img2" onmouseover="document.getElementById('img2').style.opacity='0.8'" 
 	  onmouseout="document.getElementById('img2').style.opacity='1'" 
 	  src="{% static 'mock_test.png' %}" width='100%' class="p-4 border border-dark border-2 rounded"/>
 	</a>
   </div>
-  <div class="col-4">
+  <div class="servicebox">
     <a href="{% url 'progress_chart' 1 %}">
 	<img id="img3" onmouseover="document.getElementById('img3').style.opacity='0.8'" 
 	  onmouseout="document.getElementById('img3').style.opacity='1'" 
@@ -79,23 +79,28 @@ window.onclick = function(event) {
   </a>
   </div>
 </div>
+
+
+
+
 <!-- photo link finish -->
 
 <!-- bottom text for web -->
-<div class="row m-5">
-  <div class="col-6">
-   <p class='h1'>The benefits!</p>
+<div class="containerRow">
+  <div class="container-element">
+   <p class='heading1'>The benefits!</p>
 	<p>	It is really a powerful system in which a large number of people can be connected to gain knowledge on the topics of their choice and make them well 
     practice for their entrance. In this system people can find the past question papers . Also quizzes and dummy entrance exams can be conducted in this
      app which builds up confidence for giving real entrance exam </p>
   </div>
-  <div class="col-6">
-   <p class='h1'>Really efficient</p>
+  <div class="container-element">
+   <p class='heading1'>Really efficient</p>
 	<p>	To overcome the drawbacks of the existing old fashioned system we require a system which can make the preparation
     virtually with the help of app. Entrance Preparation is the online platform that helps to prepare for various entrance exams virtually. 
    It is really a powerful system in which a large number of people can be connected to gain knowledge on the topics of their choice and make them well 
    practice for their entrance. </p>
   </div>
-</div>
+</div>	
+
 
 {% endblock %}

@@ -2,7 +2,7 @@
 {% extends 'main.html' %}
 {% load static %}
 {% block content %}
-<div id="services" >
+<div id="services" class="servicepad">
   <div class="servicebox">
     <a href="{% url 'reading_material' %}">
       <img id="img1" onmouseover="document.getElementById('img1').style.opacity='0.8'" 
@@ -32,19 +32,6 @@
    
   </div>
   <style>
-    .servicebox {
-      height: 20rem;
-      width: 20rem;
-
-    }
-     #services{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 3rem;
-      flex-wrap: wrap;
-      padding-top: 100px;
-      margin-bottom: 4rem;
-    }
+  
   </style>
   {% endblock %}

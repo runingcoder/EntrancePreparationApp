@@ -401,18 +401,57 @@ table {
 
 p {
     font-size: 14px;    
-    font-family: 'Courier', Courier, monospace;
-    color: #10110e;
-    margin-left: 50px;
+    font-family: 'Roboto Mono', monospace; 
+       color: #10110e;
+    letter-spacing: 1px;
     font-weight: bold;
 }
+.servicebox {
+    height: 24rem;
+    width: 23rem;
 
-.h1 {
+  }
+   #services{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 4rem;
+  }
+  .servicepad {
+    padding-top: 100px;
+
+  }
+
+
+.heading1 {
     font-size: 30px;
     font-weight: bold;
     color: rgb(13, 14, 12);
-    margin-left: 50px;
 }
+.containerRow {
+    padding: 0 2rem;
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    align-items: start;
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+@media screen and (max-width: 767px) {
+    .heading1 {
+        text-align: center;
+    }
+    .containerRow {
+
+        flex-direction:column;
+        
+    }
+
+}
+
 
 .container {
     display: flex;
