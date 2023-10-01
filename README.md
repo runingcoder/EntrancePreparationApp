@@ -27,8 +27,7 @@ Python, Django, Javascript, HTML, CSS
 <img src = "images/quiz.png" width = "800" height = '600'><br>
 <img src = "images/progress.png" width = "800" height = '600'><br>
 
-## Deployment:
-You can find the live working site of this project on this site: https://entranceprep.nepaldigitalmarketing.com/
+
 
 ## Credit
 This project was completed as a part of a Minor project of the curriculum of the third year of the Department of Electronics and Computer Engineering in Pulchowk Campus.
