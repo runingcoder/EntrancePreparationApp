@@ -27,6 +27,9 @@ Python, Django, Javascript, HTML, CSS
 <img src = "images/quiz.png" width = "800" height = '600'><br>
 <img src = "images/progress.png" width = "800" height = '600'><br>
 
+## Deploy
+This is deployed here: 
+https://achyut420.pythonanywhere.com/
 
 
 ## Credit
